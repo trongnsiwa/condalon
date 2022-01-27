@@ -1,0 +1,22 @@
+$enable-shadows: true;
+$primary: rgb(0, 19, 223);
+
+$body-color: #333;
+$body-bg: #f2f2f2;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@import "~bootstrap/scss/bootstrap";
