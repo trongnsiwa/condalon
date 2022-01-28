@@ -1,13 +1,41 @@
-$enable-shadows: true;
-$primary: rgb(0, 19, 223);
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-$body-color: #333;
-$body-bg: #f2f2f2;
+// colors
+$app-100: #b3daf2;
+$app-200: #6dbff2;
+$app-300: #148dd9;
+$app-400: #022d52;
+$app-light: #f2f2f2;
+$app-dark: #4d4d4d;
+
+// fonts
+$roboto: "Roboto", sans-serif;
 
 html,
 body {
   padding: 0;
   margin: 0;
+}
+
+body {
+  font-family: $roboto;
+  font-size: 17px;
+  font-weight: 400;
+}
+
+h1 {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+h2 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.subhead {
+  font-size: 24px;
+  font-weight: bold;
 }
 
 a {
