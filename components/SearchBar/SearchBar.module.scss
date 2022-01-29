@@ -1,0 +1,69 @@
+@use "../../styles/variables" as v;
+
+@mixin slideLeftBtn {
+  animation: slideLeft 2s infinite;
+  background-color: v.$app-200;
+  border-color: v.$app-200;
+}
+
+.search_bar {
+  position: relative;
+  width: 20rem;
+  height: 35px;
+  align-items: center;
+
+  &:hover,
+  &:focus {
+    & > *:not(.search_bar_btn) {
+      outline: none;
+      border-color: v.$app-200;
+    }
+
+    & > .search_bar_btn {
+      @include slideLeftBtn;
+    }
+  }
+
+  &_input {
+    width: 100%;
+    background-color: v.$app-light;
+    color: rgba($color: v.$app-dark, $alpha: 0.7);
+    padding-left: 16px;
+    font-style: italic;
+    border: 3px solid v.$app-300;
+    border-radius: 20px;
+    box-sizing: border-box;
+    font-size: 17px;
+    height: 35px;
+  }
+
+  &_btn {
+    position: absolute;
+    right: 0;
+    background-color: v.$app-300;
+    border-radius: 20px;
+    padding: 0 15px 0 15px;
+    border: 2px solid v.$app-300;
+
+    &:hover {
+      @include slideLeftBtn;
+    }
+
+    &_icon {
+      color: v.$app-light;
+      font-size: 30px;
+    }
+  }
+
+  @keyframes slideLeft {
+    0% {
+      padding-right: 15px;
+    }
+    50% {
+      padding-right: 25px;
+    }
+    100% {
+      padding-right: 15px;
+    }
+  }
+}

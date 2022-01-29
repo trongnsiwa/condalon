@@ -1,50 +1,93 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@use "variables" as v;
+@use "mixin";
 
-// colors
-$app-100: #b3daf2;
-$app-200: #6dbff2;
-$app-300: #148dd9;
-$app-400: #022d52;
-$app-light: #f2f2f2;
-$app-dark: #4d4d4d;
+@import "~bootstrap/scss/functions";
 
-// fonts
-$roboto: "Roboto", sans-serif;
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
 
-html,
-body {
-  padding: 0;
-  margin: 0;
+$app-colors: (
+  "app-100": v.$app-100,
+  "app-200": v.$app-200,
+  "app-300": v.$app-300,
+  "app-400": v.$app-400,
+  "app-light": v.$app-light,
+  "app-dark": v.$app-dark
+);
+
+$theme-colors: map-merge($theme-colors, $app-colors);
+
+@import "~bootstrap/scss/root";
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/images";
+@import "~bootstrap/scss/containers";
+@import "~bootstrap/scss/grid";
+
+// text color
+.text-app-100 {
+  color: v.$app-100;
 }
 
-body {
-  font-family: $roboto;
-  font-size: 17px;
-  font-weight: 400;
+.text-app-200 {
+  color: v.$app-200;
 }
 
-h1 {
-  font-size: 48px;
+.text-app-300 {
+  color: v.$app-300;
+}
+
+.text-app-400 {
+  color: v.$app-400;
+}
+
+.text-app-light {
+  color: v.$app-100;
+}
+
+.text-app-dark {
+  color: v.$app-dark;
+}
+
+// background color
+.bg-app-100 {
+  background-color: v.$app-100;
+}
+
+.bg-app-200 {
+  background-color: v.$app-200;
+}
+
+.bg-app-300 {
+  background-color: v.$app-300;
+}
+
+.bg-app-400 {
+  background-color: v.$app-400;
+}
+
+.bg-app-light {
+  background-color: v.$app-light;
+}
+
+.bg-app-dark {
+  background-color: v.$app-dark;
+}
+
+.btn-app {
+  background-color: v.$app-light;
+  color: v.$app-300;
+  border: 2px solid v.$app-300;
+  border-radius: 20px;
+  padding: 15px 60px 15px 60px;
+  font-size: 16px;
   font-weight: bold;
-}
 
-h2 {
-  font-size: 36px;
-  font-weight: bold;
-}
-
-.subhead {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
+  &:hover {
+    background-color: v.$app-300;
+    color: v.$app-light;
+  }
 }
 
 @import "~bootstrap/scss/bootstrap";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap");
