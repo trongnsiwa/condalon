@@ -17,9 +17,12 @@ function Layout({ children }: LayoutProps) {
       </Head>
 
       <Navbar />
-      <Container className="mt-5">{children}</Container>
 
-      <Footer />
+      <Container className="mt-5 main">{children}</Container>
+
+      <div className="mt-1">
+        <Footer />
+      </div>
     </>
   );
 }
