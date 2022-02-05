@@ -10,7 +10,7 @@ function Navbar() {
   return (
     <BNavbar bg="app-light" expand="lg" className="shadow">
       <Container>
-        <BNavbar.Brand href="#" className="text-center subhead ms-auto">
+        <BNavbar.Brand href="#" className="text-center subhead me-auto">
           Bố Mẹ Ơi,
           <br />
           Con Đã Lớn
@@ -23,8 +23,8 @@ function Navbar() {
             <Nav.Link href="#introduction">Giới thiệu</Nav.Link>
             <Nav.Link href="#about-us">Chúng tôi là</Nav.Link>
             <Nav.Link href="#contact">Liên hệ</Nav.Link>
+            <SearchBar />
           </Nav>
-          <SearchBar />
         </BNavbar.Collapse>
       </Container>
     </BNavbar>

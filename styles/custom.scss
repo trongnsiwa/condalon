@@ -1,4 +1,5 @@
 @use "variables" as v;
+@import "mixin";
 
 html,
 body {
@@ -48,6 +49,24 @@ a {
 
   .navbar-collapse {
     align-items: center;
+    height: 0;
+    transition: height 150ms linear;
+
+    &.show {
+      height: max-content;
+    }
+
+    & > .navbar-nav {
+      height: 100%;
+
+      .nav-link {
+        padding: 0.5rem 0;
+
+        @include responsive(v.$lg) {
+          padding: 0 1rem;
+        }
+      }
+    }
   }
 
   .navbar-nav {
@@ -78,6 +97,14 @@ a {
           background: v.$app-300;
         }
       }
+    }
+  }
+
+  .navbar-toggler {
+    &:focus:not(:focus-visible) {
+      outline: v.$app-300 solid 3px;
+      border: none;
+      box-shadow: none;
     }
   }
 }
