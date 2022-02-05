@@ -1,6 +1,4 @@
-import { Nav, Navbar as BNavbar, NavDropdown } from "react-bootstrap";
-
-import styles from "./Navbar.module.scss";
+import { Nav, Navbar as BNavbar } from "react-bootstrap";
 
 import React from "react";
 import { Container } from "react-bootstrap";
