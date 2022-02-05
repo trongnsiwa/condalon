@@ -4,3 +4,9 @@
   align-items: center;
   flex-direction: $align;
 }
+
+@mixin responsive($query) {
+  @media (min-width: $query) {
+    @content;
+  }
+}

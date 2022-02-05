@@ -1,4 +1,5 @@
-@use "variables" as v;
+@import "variables";
+@import "mixin";
 
 html,
 body {
@@ -7,7 +8,7 @@ body {
 }
 
 body {
-  font-family: v.$roboto;
+  font-family: $roboto;
   font-size: 17px;
   font-weight: 400;
 }
@@ -38,16 +39,34 @@ a {
 
 .navbar-light {
   .navbar-brand {
-    color: v.$app-300;
+    color: $app-300;
     line-height: 28px;
 
     &:hover {
-      color: v.$app-300;
+      color: $app-300;
     }
   }
 
   .navbar-collapse {
     align-items: center;
+    height: 0;
+    transition: height 150ms linear;
+
+    &.show {
+      height: max-content;
+    }
+
+    & > .navbar-nav {
+      height: 100%;
+
+      .nav-link {
+        padding: 0.5rem 0;
+
+        @include responsive($lg) {
+          padding: 0 1rem;
+        }
+      }
+    }
   }
 
   .navbar-nav {
@@ -57,7 +76,7 @@ a {
 
     .nav-link {
       font-weight: bold;
-      color: v.$app-dark;
+      color: $app-dark;
       padding: 0 1rem;
 
       &::after {
@@ -71,13 +90,21 @@ a {
       }
 
       &:hover {
-        color: v.$app-300;
+        color: $app-300;
 
         &::after {
           width: 100%;
-          background: v.$app-300;
+          background: $app-300;
         }
       }
+    }
+  }
+
+  .navbar-toggler {
+    &:focus:not(:focus-visible) {
+      outline: $app-300 solid 3px;
+      border: none;
+      box-shadow: none;
     }
   }
 }
