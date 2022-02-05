@@ -1,0 +1,46 @@
+@import "variables";
+@import "mixin";
+
+.home {
+  & > div {
+    height: 100vh;
+    width: 100%;
+  }
+
+  &-hero {
+    background-image: url("../public/images/home/hero.jpg");
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+
+    &_content {
+      position: absolute;
+      top: 25%;
+      left: 15%;
+
+      h1 {
+        color: $app-400;
+        font-weight: 900;
+      }
+    }
+  }
+
+  &-blogs {
+  }
+
+  &-desc {
+  }
+
+  &-desc2 {
+  }
+
+  &-hero2 {
+  }
+
+  &-connect {
+  }
+
+  &-email {
+  }
+}
