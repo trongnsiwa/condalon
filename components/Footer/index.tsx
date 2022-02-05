@@ -1,21 +1,42 @@
+import { createClient, Entry } from "contentful";
+import { IHomeContentFields } from "contentful/__generated__/types";
+import { GetStaticProps } from "next";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsFacebook } from "react-icons/bs";
 import { HiMail } from "react-icons/hi";
 
 import styles from "./Footer.module.scss";
 
+const client = createClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || "",
+  environment: process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT || "master",
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || ""
+});
+
 function Footer() {
+  const [footer, setFooter] = useState<Entry<IHomeContentFields>>();
+
+  const getFooter = async () => {
+    const { items } = await client.getEntries<IHomeContentFields>({
+      content_type: "homeContent",
+      "fields.name": "footer"
+    });
+
+    setFooter(items[0]);
+  };
+
+  useEffect(() => {
+    getFooter();
+  }, []);
+
   return (
     <footer className={styles.footer}>
       <div className="footer-inner">
         {/* heading */}
-        <h2 className="footer-inner_heading">Bố Mẹ Ơi, Con Đã Lớn</h2>
+        <h2 className="footer-inner_heading">{footer?.fields.title}</h2>
         {/* description */}
-        <p className="footer-inner_desc">
-          Website tuyên truyền ủng hộ quyền thanh thiếu nhiên được tự do theo đuổi giấc mơ của mình,
-          không chịu sự sắp đặt bởi gia đình
-        </p>
+        <p className="footer-inner_desc">{footer?.fields.description}</p>
         {/* social links */}
         <div className="footer-inner_socials">
           <a href="https://www.facebook.com/bomeoicondalon">

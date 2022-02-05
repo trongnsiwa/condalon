@@ -18,7 +18,7 @@ function Layout({ children }: LayoutProps) {
 
       <Navbar />
 
-      <Container className="mt-5 main">{children}</Container>
+      <main className="main">{children}</main>
 
       <div className="mt-1">
         <Footer />
