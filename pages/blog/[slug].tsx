@@ -18,11 +18,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     let blogContent = await api.searchBlog({
-        content_type: "blogPost",
         "fields.slug": params.slug,
       });
     let recommendBlog = await api.searchBlog({
-        content_type: "blogPost",
         "fields.slug[ne]": params.slug,
         order: 'sys.createdAt',
     })

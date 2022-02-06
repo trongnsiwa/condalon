@@ -22,7 +22,8 @@ export class BlogApi {
   }
 
   async searchBlog(filter): Promise<Entry<IBlogPostFields>[]> {
-    let data = await this.client.getEntries<IBlogPostFields>(filter);
+    let data = await this.client.getEntries<IBlogPostFields>($.extend(
+      {content_type: "blogPost"}, filter));
     return data.items;
   }
 }
