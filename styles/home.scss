@@ -21,15 +21,42 @@
 
       h1 {
         color: $app-400;
-        font-weight: 900;
       }
     }
   }
 
   &-blogs {
+    height: 100% !important;
+    margin-bottom: 10rem;
+
+    @include responsive($lg) {
+      height: 100vh;
+    }
+
+    &_inner {
+      @include center(column);
+      margin-top: 10rem;
+
+      h1 {
+        color: $app-300;
+      }
+
+      &-cards {
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+
+        @include responsive($lg) {
+          flex-direction: row;
+        }
+      }
+    }
   }
 
   &-desc {
+    background-color: $app-300;
   }
 
   &-desc2 {

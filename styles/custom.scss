@@ -14,8 +14,16 @@ body {
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 24px;
   font-weight: 700;
+
+  @include responsive($med) {
+    font-size: 36px;
+  }
+
+  @include responsive($lg) {
+    font-size: 48px;
+  }
 }
 
 h2 {
