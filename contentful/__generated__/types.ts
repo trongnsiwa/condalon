@@ -18,6 +18,9 @@ export interface IBlogPostFields {
 
   /** body */
   body: Document;
+
+  /** publishedDate */
+  publishedDate?: string | undefined;
 }
 
 export interface IBlogPost extends Entry<IBlogPostFields> {

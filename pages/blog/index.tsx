@@ -1,39 +1,29 @@
-import BlogBox  from '@components/blog/BlogBox';
+import BlogBox  from '@components/blog_box';
+import { Entry } from 'contentful';
+import { IBlogPostFields } from 'contentful/__generated__/types';
 
-import React from 'react';
-import { BlogPost } from 'services/blog.types';
+import React, { useEffect, useState } from 'react';
 import { BlogApi } from 'services/blog';
 
 
-type BlogPageProps = {
-  entries: Array<BlogPost>;
+const Blog = () => {
+  const [blogEntries, setBlogEntries] = useState<Entry<IBlogPostFields>[]>();
+
+  const getBlogEntries = async () => {
+    const api = new BlogApi();
+    const entries = await api.fetchBlogEntries();
+    setBlogEntries(entries);
+  };
+
+  useEffect(() => {
+    getBlogEntries();
+  }, []);
+
+  return (
+    <>
+      
+    </>
+  );
 };
 
-export default class BlogPage extends React.Component<BlogPageProps> {
-    static async getInitialProps() {
-        const api = new BlogApi();
-        const entries = await api.fetchBlogEntries();
-        return { entries };
-      }
-    renderBlogList = entries =>
-      entries.map((entry, i) => {
-        return (
-          <BlogBox
-            key={i}
-            id={entry.id}
-            slug={entry.slug}
-            imageUrl={entry.heroImage.imageUrl}
-            title={entry.title}
-            description={entry.description}
-          />
-        );
-      });
-    render() {
-        const {entries} = this.props;
-    return (
-        <div className="row mt-3">
-          {entries.length > 0 && this.renderBlogList(entries)}
-        </div>
-    );
-  }
-}
+export default Blog;
