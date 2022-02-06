@@ -61,14 +61,16 @@
     background-color: $app-200;
     margin-top: 10rem;
     @include center(column-reverse);
+    align-items: flex-start;
     gap: 2rem;
-    padding: 5rem 1rem;
+    padding: 5rem 2rem;
     height: 100% !important;
 
     @include responsive($xl) {
       height: 100vh;
       padding: 5rem 0;
       flex-direction: row;
+      align-items: center;
     }
 
     &_left {
@@ -89,12 +91,6 @@
     }
 
     &_right {
-      width: 100%;
-
-      @include responsive($xl) {
-        width: 40em;
-      }
-
       img {
         object-fit: cover;
         height: 40rem;
@@ -109,41 +105,58 @@
   }
 
   &-desc2 {
-    margin-top: 10rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    @include center(column);
+    align-items: flex-start;
     gap: 2rem;
-    padding: 5rem 20rem 5rem 10rem;
+    padding: 5rem 2rem;
+    height: 100% !important;
+    position: relative;
+
+    @include responsive($xl) {
+      height: 100vh;
+      padding: 5rem 0;
+      flex-direction: row;
+      align-items: center;
+    }
 
     &_dark {
-      background-color: $app-dark;
-      left: 0;
+      width: 30rem;
+      background-color: $app-400;
       height: 100vh;
       position: absolute;
+      left: 0;
+      top: 0;
+      z-index: -1;
     }
 
     &_left {
-      width: 60%;
-
       img {
         object-fit: cover;
-        height: 50rem;
-        width: 50rem;
+        height: 40rem;
+        width: 100%;
+
+        @include responsive($lg) {
+          height: 50rem;
+          width: 50rem;
+        }
       }
     }
-  }
 
-  &_right {
-    width: 40%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1rem;
+    &_right {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 1rem;
 
-    h2 {
-      color: $app-300;
+      @include responsive($xl) {
+        width: 40em;
+      }
+
+      h2 {
+        color: $app-300;
+      }
     }
   }
 
