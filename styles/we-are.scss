@@ -1,0 +1,41 @@
+@import "variables";
+@import "mixin";
+
+.about {
+  & > div {
+    height: 100vh;
+    width: 100%;
+  }
+
+  &-hero {
+    background-image: url("../public/images/home/hero.jpg");
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  &-content {
+    font-size: 48px;
+    color: $app-300;
+    font-weight: bold;
+    line-height: 250px;
+    position: relative;
+  }
+
+  &-content2 {
+    font-size: 48px;
+    color: $app-300;
+    font-weight: bold;
+    line-height: 50px;
+    position: relative;
+  }
+
+  &-subcontent {
+    font-size: 20px;
+    line-height: 50px;
+    position: relative;
+    padding: 100px;
+  }
+
+}

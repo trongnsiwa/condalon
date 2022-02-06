@@ -46,3 +46,5 @@ $theme-colors: map-merge($theme-colors, $app-colors);
 @import "~bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 @import "home.scss";
+@import "we-are.scss";
+@import "blog.scss";

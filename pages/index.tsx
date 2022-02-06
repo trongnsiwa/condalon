@@ -1,4 +1,3 @@
-import SearchBar from "@components/SearchBar";
 import { createClient, Entry } from "contentful";
 import { IHomeContentFields } from "contentful/__generated__/types";
 import { useEffect, useState } from "react";
