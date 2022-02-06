@@ -1,5 +1,5 @@
-@use "variables" as v;
-@use "mixin";
+@import "variables";
+@import "mixin";
 
 @import "~bootstrap/scss/functions";
 
@@ -7,12 +7,12 @@
 @import "~bootstrap/scss/mixins";
 
 $app-colors: (
-  "app-100": v.$app-100,
-  "app-200": v.$app-200,
-  "app-300": v.$app-300,
-  "app-400": v.$app-400,
-  "app-light": v.$app-light,
-  "app-dark": v.$app-dark
+  "app-100": $app-100,
+  "app-200": $app-200,
+  "app-300": $app-300,
+  "app-400": $app-400,
+  "app-light": $app-light,
+  "app-dark": $app-dark
 );
 
 $theme-colors: map-merge($theme-colors, $app-colors);
@@ -24,70 +24,25 @@ $theme-colors: map-merge($theme-colors, $app-colors);
 @import "~bootstrap/scss/containers";
 @import "~bootstrap/scss/grid";
 
-// text color
-.text-app-100 {
-  color: v.$app-100;
-}
-
-.text-app-200 {
-  color: v.$app-200;
-}
-
-.text-app-300 {
-  color: v.$app-300;
-}
-
-.text-app-400 {
-  color: v.$app-400;
-}
-
-.text-app-light {
-  color: v.$app-100;
-}
-
-.text-app-dark {
-  color: v.$app-dark;
-}
-
-// background color
-.bg-app-100 {
-  background-color: v.$app-100;
-}
-
-.bg-app-200 {
-  background-color: v.$app-200;
-}
-
-.bg-app-300 {
-  background-color: v.$app-300;
-}
-
-.bg-app-400 {
-  background-color: v.$app-400;
-}
-
-.bg-app-light {
-  background-color: v.$app-light;
-}
-
-.bg-app-dark {
-  background-color: v.$app-dark;
-}
-
 .btn-app {
-  background-color: v.$app-light;
-  color: v.$app-300;
-  border: 2px solid v.$app-300;
+  background-color: $app-light;
+  color: $app-300;
+  border: 2px solid $app-300;
   border-radius: 20px;
-  padding: 15px 60px 15px 60px;
+  padding: 15px 50px 15px 50px;
   font-size: 16px;
   font-weight: bold;
 
   &:hover {
-    background-color: v.$app-300;
-    color: v.$app-light;
+    background-color: $app-300;
+    color: $app-light;
   }
+}
+
+.main {
+  min-height: 100vh;
 }
 
 @import "~bootstrap/scss/bootstrap";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import "home.scss";

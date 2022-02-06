@@ -1,0 +1,89 @@
+@import "../../styles/variables";
+@import "../../styles/mixin";
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: $app-light;
+
+  :global {
+    .footer-inner {
+      padding: 3rem 0;
+      gap: 0.5rem;
+      @include center(column);
+
+      @include responsive($lg) {
+        padding: 5rem 0;
+      }
+
+      &_heading {
+        color: $app-300;
+
+        &:hover {
+          color: $app-300;
+        }
+      }
+
+      &_desc {
+        width: 75%;
+        text-align: center;
+      }
+
+      &_socials {
+        gap: 1rem;
+        display: flex;
+
+        .socials-icon {
+          color: $app-300;
+          background-color: white;
+          border-radius: 100%;
+
+          &:hover {
+            color: $app-200;
+          }
+
+          &:not(.facebook) {
+            color: white;
+            background-color: $app-300;
+            padding: 3px;
+
+            &:hover {
+              background-color: $app-200;
+            }
+          }
+        }
+      }
+
+      &_links {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        font-weight: bold;
+        margin-top: 1rem;
+
+        a {
+          text-align: center;
+        }
+
+        @include responsive($lg) {
+          flex-direction: row;
+        }
+      }
+    }
+
+    .footer-bottom {
+      background-color: $app-300;
+      width: 100%;
+      bottom: 0;
+
+      p {
+        margin-bottom: 0;
+        text-align: center;
+        color: white;
+        padding: 1rem 0;
+        font-size: 15px;
+      }
+    }
+  }
+}

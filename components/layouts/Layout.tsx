@@ -1,4 +1,6 @@
+import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
+import Head from "next/head";
 import React from "react";
 import { Container } from "react-bootstrap";
 
@@ -9,8 +11,18 @@ interface LayoutProps {
 function Layout({ children }: LayoutProps) {
   return (
     <>
+      <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Bố Mẹ Ơi, Con Đã Lớn</title>
+      </Head>
+
       <Navbar />
-      <Container className="mt-5">{children}</Container>
+
+      <main className="main">{children}</main>
+
+      <div className="mt-1">
+        <Footer />
+      </div>
     </>
   );
 }
