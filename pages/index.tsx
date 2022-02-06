@@ -88,11 +88,39 @@ const Home = () => {
             <button className="btn-app">Xem thêm</button>
           </div>
           <div className="home-desc_right">
-            <img src="" alt="" />
+            <img
+              src="https://images.unsplash.com/photo-1491897554428-130a60dd4757?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+              alt=""
+            />
           </div>
         </div>
         {/* desc2 */}
-        <div className="home-desc2"></div>
+        <div className="home-desc2">
+          <div className="home-desc2_dark" />
+          <div className="home-desc2_left">
+            <img
+              src="https://images.unsplash.com/photo-1491897554428-130a60dd4757?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+              alt=""
+            />
+          </div>
+          <div className="home-desc2_right">
+            <h2>Chúng Tôi Những Chiếc Lọ Đựng Sao</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cum pulvinar pellentesque
+              sapien nulla. Sit blandit elit molestie ut risus dui lorem. In in purus nulla nisi
+              commodo ullamcorper sed turpis. Nullam interdum tempus magna eget sed ac. Nisl purus
+              arcu turpis blandit massa fermentum neque, quam. Erat sit etiam pharetra amet,
+              phasellus cursus auctor. Amet morbi risus nunc, morbi amet id accumsan. Sagittis
+              montes, massa urna, magna sem ac etiam aliquam est. Laoreet sed at venenatis nulla
+              viverra. Sit sed egestas feugiat porta nunc. Vitae in integer tempus pretium tristique
+              lacus pellentesque volutpat facilisis. Quis odio nec volutpat, nisl malesuada neque,
+              quam morbi fringilla. Egestas viverra malesuada facilisis pulvinar aenean eget ipsum
+              erat. Aenean pellentesque lorem lorem vulputate tincidunt sapien. Tempus elit mattis
+              auctor at amet.
+            </p>
+            <button className="btn-app">Xem thêm</button>
+          </div>
+        </div>
         {/* hero2 */}
         <div className="home-hero2"></div>
         {/* connect */}
