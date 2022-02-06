@@ -1,6 +1,5 @@
 import { createClient, Entry } from "contentful";
 import { IHomeContentFields } from "contentful/__generated__/types";
-import { GetStaticProps } from "next";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { BsFacebook } from "react-icons/bs";

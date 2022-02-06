@@ -1,0 +1,48 @@
+@import "../../styles/variables";
+@import "../../styles/mixin";
+
+.card {
+  width: 25rem;
+  border-radius: 50px;
+  background-color: $app-light;
+  box-shadow: 0 3px 10px rgba($color: $app-300, $alpha: 0.2);
+  transition: transform 0.3s ease-in-out;
+
+  @include responsive($lg) {
+    width: 20rem;
+  }
+
+  @include responsive($xl) {
+    width: 27rem;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 30px rgba($color: $app-300, $alpha: 0.2);
+    transform: scale(1.05);
+    border: 1px solid $app-300;
+  }
+
+  :global {
+    .card-img {
+      object-fit: cover;
+      object-position: center;
+      height: 15rem;
+      border-radius: 50px;
+    }
+
+    .card-body {
+      @include center(column);
+      text-align: center;
+      gap: 1rem;
+
+      &_title {
+        margin-top: 1rem;
+        color: $app-300;
+      }
+
+      .btn-app {
+        margin-bottom: 1.5rem;
+      }
+    }
+  }
+}
