@@ -172,8 +172,7 @@
   }
 
   &-connect {
-    margin-top: 10rem;
-    @include center(column-reverse);
+    @include center(column);
     align-items: flex-start;
     gap: 2rem;
     padding: 5rem 2rem;
@@ -204,15 +203,10 @@
     }
 
     &_right {
-      img {
-        object-fit: cover;
-        height: 40rem;
-        width: 100%;
+      width: 100%;
 
-        @include responsive($lg) {
-          height: 50rem;
-          width: 50rem;
-        }
+      @include responsive($lg) {
+        width: auto;
       }
     }
   }
@@ -225,6 +219,24 @@
 
     h2 {
       color: white;
+      width: 27rem;
+      text-align: center;
+      font-size: 24px;
+      padding: 0 1rem;
+
+      @include responsive($med) {
+        font-size: 36px;
+        padding: 0;
+      }
+    }
+
+    &_form {
+      margin-top: 2rem;
+      width: 100%;
+
+      @include responsive($lg) {
+        width: auto;
+      }
     }
   }
 }
