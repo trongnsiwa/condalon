@@ -172,8 +172,7 @@
   }
 
   &-connect {
-    margin-top: 10rem;
-    @include center(column-reverse);
+    @include center(column);
     align-items: flex-start;
     gap: 2rem;
     padding: 5rem 2rem;

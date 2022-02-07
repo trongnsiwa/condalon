@@ -9,16 +9,18 @@ function Navbar() {
   return (
     <BNavbar bg="app-light" expand="lg" className="shadow">
       <Container>
-        <BNavbar.Brand href="#" className="text-center subhead me-auto">
-          Bố Mẹ Ơi,
-          <br />
-          Con Đã Lớn
-        </BNavbar.Brand>
+        <Link href="/" passHref>
+          <BNavbar.Brand className="text-center subhead me-auto">
+            Bố Mẹ Ơi,
+            <br />
+            Con Đã Lớn
+          </BNavbar.Brand>
+        </Link>
         <BNavbar.Toggle aria-controls="responsive-navbar-nav" />
         <BNavbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
             <Nav.Item>
-              <Link href="/home">Trang chủ</Link>
+              <Link href="/">Trang chủ</Link>
             </Nav.Item>
             <Nav.Item>
               <Link href="/blog">Blog</Link>

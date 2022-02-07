@@ -1,5 +1,6 @@
 import Card from "@components/Card";
 import SearchBar from "@components/SearchBar";
+import SharedForm from "@components/SharedForm";
 import { createClient, Entry } from "contentful";
 import { IHomeContentFields } from "contentful/__generated__/types";
 import { useEffect, useState } from "react";
@@ -103,7 +104,9 @@ const Home = () => {
             <p>{getFields("connect")?.description}</p>
             <button className="btn-app">Xem thêm</button>
           </div>
-          <div className="home-connect_right"></div>
+          <div className="home-connect_right">
+            <SharedForm />
+          </div>
         </div>
         {/* email */}
         <div className="home-email">
