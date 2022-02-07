@@ -3,7 +3,7 @@
 
 .about {
   & > div {
-    height: 100vh;
+    height: 35vh;
     width: 100%;
   }
 
@@ -35,24 +35,20 @@
     font-size: 20px;
     line-height: 25px;
     position: relative;
-    padding: 100px;
+    padding: 10px;
   }
 
   &-profile {
-    height: 100% !important;
-    margin-bottom: 10rem;
-
-    @include responsive($lg) {
-      height: 100vh;
-    }
+    height: 50% !important;
+    margin-bottom: 5rem;
 
     &_inner {
       @include center(column);
-      margin-top: 10rem;
+      margin-top: 5rem;
 
       h1 {
         color: $app-300;
-        text-align: center;
+        text-align: left;
         margin: 0 0.5rem;
       }
 
