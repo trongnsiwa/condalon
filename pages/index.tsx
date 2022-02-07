@@ -1,5 +1,5 @@
 import Card from "@components/Card";
-import SearchBar from "@components/SearchBar";
+import RegisterForm from "@components/RegisterForm";
 import SharedForm from "@components/SharedForm";
 import { createClient, Entry } from "contentful";
 import { IHomeContentFields } from "contentful/__generated__/types";
@@ -111,6 +111,9 @@ const Home = () => {
         {/* email */}
         <div className="home-email">
           <h2>{getFields("email")?.title}</h2>
+          <div className="home-email_form">
+            <RegisterForm />
+          </div>
         </div>
       </div>
     </>
