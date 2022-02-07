@@ -45,3 +45,5 @@ $theme-colors: map-merge($theme-colors, $app-colors);
 
 @import "~bootstrap/scss/bootstrap";
 @import "home.scss";
+@import "we-are.scss";
+@import "blog.scss";
