@@ -33,9 +33,41 @@
 
   &-subcontent {
     font-size: 20px;
-    line-height: 50px;
+    line-height: 25px;
     position: relative;
     padding: 100px;
+  }
+
+  &-profile {
+    height: 100% !important;
+    margin-bottom: 10rem;
+
+    @include responsive($lg) {
+      height: 100vh;
+    }
+
+    &_inner {
+      @include center(column);
+      margin-top: 10rem;
+
+      h1 {
+        color: $app-300;
+        text-align: center;
+        margin: 0 0.5rem;
+      }
+
+      &-cards {
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+
+        @include responsive($lg) {
+          flex-direction: row;
+        }
+      }
+    }
   }
 
 }
