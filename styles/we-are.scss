@@ -1,0 +1,69 @@
+@import "variables";
+@import "mixin";
+
+.about {
+  & > div {
+    height: 35vh;
+    width: 100%;
+  }
+
+  &-hero {
+    background-image: url("../public/images/home/hero.jpg");
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+
+  &-content {
+    font-size: 48px;
+    color: $app-300;
+    font-weight: bold;
+    line-height: 250px;
+    position: relative;
+  }
+
+  &-content2 {
+    font-size: 48px;
+    color: $app-300;
+    font-weight: bold;
+    line-height: 50px;
+    position: relative;
+  }
+
+  &-subcontent {
+    font-size: 20px;
+    line-height: 25px;
+    position: relative;
+    padding: 10px;
+  }
+
+  &-profile {
+    height: 50% !important;
+    margin-bottom: 5rem;
+
+    &_inner {
+      @include center(column);
+      margin-top: 5rem;
+
+      h1 {
+        color: $app-300;
+        text-align: left;
+        margin: 0 0.5rem;
+      }
+
+      &-cards {
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2rem;
+
+        @include responsive($lg) {
+          flex-direction: row;
+        }
+      }
+    }
+  }
+
+}

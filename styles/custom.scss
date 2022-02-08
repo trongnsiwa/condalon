@@ -97,6 +97,15 @@ a {
         transition: width 0.5s ease, background-color 0.5s ease;
       }
 
+      &.active {
+        color: $app-300;
+
+        &::after {
+          width: 100%;
+          background: $app-300;
+        }
+      }
+
       &:hover {
         color: $app-300;
 
