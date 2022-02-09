@@ -1,0 +1,125 @@
+@import "variables";
+@import "mixin";
+
+.introduce {
+  & > div {
+    height: 50vh;
+    width: 100%;
+  }
+
+  &-bgImg {
+    background-image: url("https://images.unsplash.com/photo-1513002749550-c59d786b8e6c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80");
+    background-position: 100% 65%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+  }
+  &-preface {
+    @include center(column);
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 5rem 2rem;
+    height: 100% !important;
+    position: relative;
+
+    @include responsive($xl) {
+      height: 100vh;
+      padding: 5rem 0;
+      flex-direction: row;
+      align-items: center;
+    }
+    &_left {
+        img {
+          object-fit: cover;
+          height: 20rem;
+          width: 100%;
+  
+          @include responsive($lg) {
+            height: 25rem;
+            width: 25rem;
+          }
+        }
+    }
+  
+    &_right {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 1rem;
+  
+        @include responsive($xl) {
+          width: 40em;
+        }
+  
+        h2 {
+          color: $app-300;
+        }
+    }
+  }
+  &-goal {
+    background-image: url("https://www.incimages.com/uploaded_files/image/1920x1080/getty_1002148134_200013332000928034_405126.jpg");
+    background-position: 100% 75%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    &_content {
+      position: absolute;
+      text-align: center;
+      h2 {
+        color: $app-light;
+        padding: 3rem;
+      }
+      p{
+        color: $app-light;
+        margin-left: 10rem;
+        margin-right: 10rem;
+      }
+    }
+  }
+  &-team {
+    @include center(column);
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 5rem 2rem;
+    height: 100% !important;
+    position: relative;
+
+    @include responsive($xl) {
+      height: 100vh;
+      padding: 5rem 0;
+      flex-direction: row;
+      align-items: center;
+    }
+    &_left {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 1rem;
+  
+      @include responsive($xl) {
+        width: 40em;
+      }
+  
+      h2 {
+        color: $app-300;
+      }
+    }
+  
+    &_right {
+      img {
+        object-fit: cover;
+        height: 20rem;
+        width: 100%;
+
+        @include responsive($lg) {
+          height: 30rem;
+          width: 30rem;
+        }
+      }
+    }
+  }
+}
