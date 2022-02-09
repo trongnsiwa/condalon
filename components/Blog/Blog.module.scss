@@ -1,0 +1,38 @@
+@import "../../styles/variables";
+@import "../../styles/mixin";
+
+.blog {
+  
+  :global {
+    .blog-title {
+      margin-top: 1rem;
+      font-size: 45px;
+      color: $app-300;
+    }
+
+    .blog-date {
+      font-size: 20px;
+    }
+
+    .blog-img {
+      width: 55%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .blog-desc {
+        padding: 1rem 0;
+        font-size: 16px;
+    }
+
+    .blog-line {
+      width: 40%;
+      margin-left: auto;
+      margin-right: auto;
+      height: 25px;
+      border-bottom: 1px solid $app-300;
+      position: relative;
+    }
+  }
+}
