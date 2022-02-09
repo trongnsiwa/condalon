@@ -21,6 +21,9 @@ export interface IBlogPostFields {
 
   /** publishedDate */
   publishedDate?: string | undefined;
+
+  /** comments */
+  comments?: Record<string, any> | undefined;
 }
 
 export interface IBlogPost extends Entry<IBlogPostFields> {
@@ -68,7 +71,35 @@ export interface IHomeContent extends Entry<IHomeContentFields> {
   };
 }
 
-export type CONTENT_TYPE = "blogPost" | "homeContent";
+export interface IIntroduceContentFields {
+  /** name */
+  name: string;
+
+  /** title */
+  title: string;
+
+  /** description */
+  description?: string | undefined;
+}
+
+export interface IIntroduceContent extends Entry<IIntroduceContentFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "introduceContent";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export type CONTENT_TYPE = "blogPost" | "homeContent" | "introduceContent";
 
 export type LOCALE_CODE = "en-US";
 

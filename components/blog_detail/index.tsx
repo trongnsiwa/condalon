@@ -1,6 +1,6 @@
 import Navbar from "@components/Navbar";
 
-function BlogDetail() {
+function BlogDetailBox() {
 }
 
-export default BlogDetail;
+export default BlogDetailBox;
