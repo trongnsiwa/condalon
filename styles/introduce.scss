@@ -5,6 +5,9 @@
   & > div {
     height: 50vh;
     width: 100%;
+    @media (max-width: $lg) {
+      height: 70vh;
+    }
   }
 
   &-bgImg {
@@ -36,7 +39,10 @@
   
           @include responsive($lg) {
             height: 25rem;
-            width: 25rem;
+            width: 100%;
+          }
+          @media (max-width: $lg) {
+            height: 30rem;
           }
         }
     }
@@ -118,6 +124,9 @@
         @include responsive($lg) {
           height: 30rem;
           width: 30rem;
+        }
+        @media (max-width: $lg) {
+          height: 40rem;
         }
       }
     }

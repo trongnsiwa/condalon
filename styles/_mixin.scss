@@ -10,3 +10,9 @@
     @content;
   }
 }
+
+@mixin responsive2($query) {
+  @media (max-width: $query) {
+    @content;
+  }
+}
