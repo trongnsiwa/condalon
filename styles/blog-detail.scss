@@ -43,11 +43,11 @@
     &_socials {
       gap: 1.3rem;
       display: flex;
-      margin-bottom: 1rem;
       .socials-icon {
         color: $app-300;
         background-color: white;
         border-radius: 100%;
+        margin-top: 1rem;
 
         &:hover {
           color: $app-200;
@@ -67,7 +67,7 @@
   }
   &-line {
     width: 80%;
-    margin-top: 10rem;
+    margin-top: 7rem;
     margin-bottom: 5rem;
     margin-left: auto;
     margin-right: auto;
