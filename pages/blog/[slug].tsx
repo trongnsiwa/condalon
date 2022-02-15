@@ -98,6 +98,7 @@ const BlogDetail = ({ blogContent, recommendBlog }) => {
                               description= {item.fields.description}
                               image= {item.fields.coverImage.fields.file.url}
                               key = {item.sys.id}
+                              slug={item.fields.slug}
                           />
                         );
                     })}
