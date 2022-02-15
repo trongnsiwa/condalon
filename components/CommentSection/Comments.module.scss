@@ -1,0 +1,30 @@
+@import "../../styles/variables";
+@import "../../styles/mixin";
+
+.comments {
+  
+  :global {
+    .comments-title {
+      margin-top: 1rem;
+      color: $app-300;
+      font-style: bold;
+    }
+
+    .comments-form {
+      width: 100%;
+      text-align: center;
+      @include responsive($lg) {
+          width: auto;
+      }
+      &_title{
+        h4{
+          margin-top: 2rem;
+          color: $app-300;
+        }
+      }
+    }
+    .comments-container {
+        margin-top: 2rem;
+    }
+  }
+}

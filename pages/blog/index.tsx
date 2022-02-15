@@ -1,27 +1,59 @@
-import BlogBox  from '@components/blog_box';
-import { Entry } from 'contentful';
-import { IBlogPostFields } from 'contentful/__generated__/types';
+import BlogItem from "@components/Blog";
+import { createClient, Entry } from "contentful";
+import { IBlogPostFields } from "contentful/__generated__/types";
+import { useEffect, useState } from "react";
+import Link from "next/link";
 
-import React, { useEffect, useState } from 'react';
-import { BlogApi } from 'services/blog';
-
+const client = createClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || "",
+  environment: process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT || "master",
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || "",
+});
 
 const Blog = () => {
-  const [blogEntries, setBlogEntries] = useState<Entry<IBlogPostFields>[]>();
+  const [blogContent, setBlogContent] = useState<Entry<IBlogPostFields>[]>();
 
-  const getBlogEntries = async () => {
-    const api = new BlogApi();
-    const entries = await api.fetchBlogEntries();
-    setBlogEntries(entries);
+  const getBlogContent = async () => {
+    const { items } = await client.getEntries<IBlogPostFields>({
+      content_type: "blogPost",
+    });
+    setBlogContent(items);
+  };
+
+  const getFields = (slug: string) => {
+    return blogContent?.find((h) => h.fields.slug === slug).fields;
   };
 
   useEffect(() => {
-    getBlogEntries();
+    getBlogContent();
   }, []);
 
   return (
     <>
-      
+      <div className="blog">
+        {/* hero */}
+        <div className="blog-hero"></div>
+        {blogContent?.map((item, i) => {
+          return (
+            <li key={item.fields.slug}>
+              <Link href={"/blog/" + item.fields.slug} passHref>
+                <a>
+                  <BlogItem
+                    image={
+                      getFields(item.fields.slug)?.coverImage.fields.file.url
+                    }
+                    title={getFields(item.fields.slug)?.title}
+                    publicDate={getFields(item.fields.slug)?.title}
+                    owner="Hoang Phuc"
+                    description={getFields(item.fields.slug)?.description}
+                    key = {item.sys.id}
+                  />
+                </a>
+              </Link>
+            </li>
+          );
+        })}
+      </div>
     </>
   );
 };
