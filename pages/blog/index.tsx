@@ -46,6 +46,7 @@ const Blog = () => {
                     publicDate={getFields(item.fields.slug)?.title}
                     owner="Hoang Phuc"
                     description={getFields(item.fields.slug)?.description}
+                    key = {item.sys.id}
                   />
                 </a>
               </Link>

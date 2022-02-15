@@ -1,0 +1,73 @@
+@import "../../styles/variables";
+@import "../../styles/mixin";
+
+.commentForm {
+  :global {
+    margin-top: 1.5rem;
+    .commentForm-commentorName {
+        width: 70%;
+        background-color: $app-light;
+        color: rgba($color: $app-dark, $alpha: 0.7);
+        padding-left: 16px;
+        font-style: italic;
+        border: 3px solid $app-300;
+        box-sizing: border-box;
+        font-size: 17px;
+        height: 50px;
+    
+        @media (max-width: $lg) {
+            height: 3rem;
+            width: 100%;
+        }
+    }
+
+    .commentForm-textarea {
+        width: 70%;
+        height: 7rem;
+        background-color: $app-light;
+        color: rgba($color: $app-dark, $alpha: 0.7);
+        padding-left: 16px;
+        font-style: italic;
+        border: 3px solid $app-300;
+        box-sizing: border-box;
+        font-size: 17px;
+        margin-top: 2.5rem;
+
+        @media (max-width: $lg) {
+            height: 10rem;
+            width: 100%;
+        }
+    }
+    .commentForm-btn {
+        width: 20%;
+        height: 3rem;
+        margin-top: 1.5rem;
+        background-color: $app-light;
+        color: $app-300;
+        border: 2px solid $app-300;
+        border-radius: 20px;
+        padding: 0 5px;
+        font-size: 17px;
+        font-weight: bold;
+        margin-right: 1rem;
+
+        &:hover {
+            background-color: $app-300;
+            color: $app-light;
+        }
+        &:disabled {
+            opacity: 0.3;
+            cursor: default;
+        }
+
+        @media (max-width: $lg) {
+            height: 4rem;
+            width: 6rem;
+            padding: 0 5px;
+        }
+    }
+    .commentForm-cancel-button {
+        margin-left: 10px;
+    }
+  }
+}

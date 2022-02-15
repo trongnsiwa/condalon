@@ -5,7 +5,7 @@ import { Document } from "@contentful/rich-text-types";
 
 export interface IBlogPostFields {
   /** slug */
-  slug?: string | undefined;
+  slug: string;
 
   /** title */
   title: string;
@@ -19,11 +19,8 @@ export interface IBlogPostFields {
   /** body */
   body: Document;
 
-  /** publishedDate */
-  publishedDate?: string | undefined;
-
   /** comments */
-  comments?: Record<string, any> | undefined;
+  comments?: IComment[] | undefined;
 }
 
 export interface IBlogPost extends Entry<IBlogPostFields> {
@@ -36,6 +33,36 @@ export interface IBlogPost extends Entry<IBlogPostFields> {
     contentType: {
       sys: {
         id: "blogPost";
+        linkType: "ContentType";
+        type: "Link";
+      };
+    };
+  };
+}
+
+export interface ICommentFields {
+  /** commentatorName */
+  commentatorName: string;
+
+  /** content */
+  content: string;
+
+  /** parent */
+  parent?: IComment | undefined;
+}
+
+/** Post comment */
+
+export interface IComment extends Entry<ICommentFields> {
+  sys: {
+    id: string;
+    type: string;
+    createdAt: string;
+    updatedAt: string;
+    locale: string;
+    contentType: {
+      sys: {
+        id: "comment";
         linkType: "ContentType";
         type: "Link";
       };
@@ -99,7 +126,11 @@ export interface IIntroduceContent extends Entry<IIntroduceContentFields> {
   };
 }
 
-export type CONTENT_TYPE = "blogPost" | "homeContent" | "introduceContent";
+export type CONTENT_TYPE =
+  | "blogPost"
+  | "comment"
+  | "homeContent"
+  | "introduceContent";
 
 export type LOCALE_CODE = "en-US";
 

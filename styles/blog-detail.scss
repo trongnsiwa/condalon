@@ -1,0 +1,98 @@
+@import "variables";
+@import "mixin";
+
+.blogDetail {
+  &-blogContent {
+    height: 100% !important;
+    margin-bottom: 2rem;
+
+    @include responsive($lg) {
+      height: 100vh;
+    }
+
+    &_title {
+      @include center(column);
+      margin: 2rem;
+
+      h1 {
+        color: $app-300;
+        text-align: center;
+        margin: 0 0.5rem;
+      }
+    }
+    &_publishDate {
+      @include center(column);
+      margin: 1rem;
+      font-size: 1.3rem;
+      font-style: italic;
+    }
+    &_content {
+      @include center(column);
+      margin-left: 6rem;
+      margin-right: 6rem;
+    }
+  }
+  &-share{
+    margin-top: 2rem;
+    margin-left: 6rem;
+    margin-right: 6rem;
+    &_text {
+      font-size: 1.3rem;
+      font-style: italic;
+    }
+    &_socials {
+      gap: 1.3rem;
+      display: flex;
+      .socials-icon {
+        color: $app-300;
+        background-color: white;
+        border-radius: 100%;
+        margin-top: 1rem;
+
+        &:hover {
+          color: $app-200;
+        }
+
+        &:not(.facebook) {
+          color: white;
+          background-color: $app-300;
+          padding: 3px;
+
+          &:hover {
+            background-color: $app-200;
+          }
+        }
+      }
+    }
+  }
+  &-line {
+    width: 80%;
+    margin-top: 7rem;
+    margin-bottom: 5rem;
+    margin-left: auto;
+    margin-right: auto;
+    border-bottom: 0.1rem solid $app-300;
+  }
+  &-recommendBlog {
+    
+    @include center(column);
+    h1 {
+      color: $app-300;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    &_blogCard {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 2rem;
+
+      @include responsive($lg) {
+        flex-direction: row;
+      }
+    }
+  }
+  &-commentSection {
+    margin: 4rem;
+  }
+}
