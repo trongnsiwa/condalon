@@ -39,9 +39,11 @@ function CommentSection ({blog_id}) {
                     setActiveComment(null);
                 }} width="85rem"/>
             </div>
-            <h2 className="comments-title">
+            {rootComments?.length > 0 && (
+                <h2 className="comments-title">
                 Bình luận
-            </h2>
+                </h2>
+            )}
             <div className="comments-container">
                 {rootComments?.length > 0 && rootComments?.map((comment) => {
                   return (
