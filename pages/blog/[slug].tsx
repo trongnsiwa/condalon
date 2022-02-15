@@ -1,7 +1,7 @@
 import Card from "@components/Card";
 import React from 'react';
 import { BlogApi } from 'services/blog';
-import { BLOCKS } from '@contentful/rich-text-types';
+import { BLOCKS, MARKS } from '@contentful/rich-text-types';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import CommentSection from "@components/CommentSection";
 import ImageBlock from "@components/ImageBlock";
@@ -38,13 +38,44 @@ export async function getStaticProps({ params }) {
         }
     }
 }
-  
+const Bold = ({ children }) => <span style={{fontWeight: "bold"}}>{children}</span>; 
+const Paragragh = ({ children }) => <p>{children}</p>;
+const H1 = ({children}) => <div style={{textAlign: "center"}}><h1>{children}</h1></div> 
+const H2 = ({children}) => <div style={{textAlign: "center"}}><h2>{children}</h2></div>
+const H3 = ({children}) => <div style={{textAlign: "center"}}><h3>{children}</h3></div>
+const H4 = ({children}) => <div style={{textAlign: "center"}}><h4>{children}</h4></div>
+const H5 = ({children}) => <div style={{textAlign: "center"}}><h5>{children}</h5></div>
+const H6 = ({children}) => <div style={{textAlign: "center"}}><h6>{children}</h6></div>
 const options = {
+  renderMark: {
+    [MARKS.BOLD]: (text) => <Bold>{text}</Bold>,
+  },
   renderNode: {
     [BLOCKS.EMBEDDED_ASSET]: (node) => {
       const { title, description, file } = node.data.target.fields;
       return <ImageBlock title={title} description={description} img = {file.url} />
-    }, 
+    },
+    [BLOCKS.PARAGRAPH]: (node, children) => {
+      return <Paragragh>{children}</Paragragh>
+    },
+    [BLOCKS.HEADING_1]: (node, children) => {
+      return <H1>{children}</H1>
+    },
+    [BLOCKS.HEADING_2]: (node, children) => {
+      return <H2>{children}</H2>
+    },
+    [BLOCKS.HEADING_3]: (node, children) => {
+      return <H3>{children}</H3>
+    },
+    [BLOCKS.HEADING_4]: (node, children) => {
+      return <H4>{children}</H4>
+    },
+    [BLOCKS.HEADING_5]: (node, children) => {
+      return <H5>{children}</H5>
+    },
+    [BLOCKS.HEADING_6]: (node, children) => {
+      return <H6>{children}</H6>
+    }
   }
   };
 const BlogDetail = ({ blogContent, recommendBlog }) => {
