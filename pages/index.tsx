@@ -2,7 +2,7 @@ import Card from "@components/Card";
 import RegisterForm from "@components/RegisterForm";
 import SharedForm from "@components/SharedForm";
 import { createClient, Entry } from "contentful";
-import { IHomeContentFields } from "contentful/__generated__/types";
+import { IBlogPostFields, IHomeContentFields } from "contentful/__generated__/types";
 import { useEffect, useState } from "react";
 import { Fade, Flip } from "react-awesome-reveal";
 
@@ -14,6 +14,16 @@ const client = createClient({
 
 const Home = () => {
   const [homeContent, setHomeContent] = useState<Entry<IHomeContentFields>[]>();
+  const [blogPosts, setBlogPosts] = useState<Entry<IBlogPostFields>[]>();
+
+  const getBlogPost = async () => {
+    const { items } = await client.getEntries<IBlogPostFields>({
+      content_type: "blogPost",
+      limit: 3,
+      skip: 0
+    });
+    setBlogPosts(items);
+  };
 
   const getHomeContent = async () => {
     const { items } = await client.getEntries<IHomeContentFields>({
@@ -29,6 +39,10 @@ const Home = () => {
 
   useEffect(() => {
     getHomeContent();
+  }, []);
+
+  useEffect(() => {
+    getBlogPost();
   }, []);
 
   return (
@@ -55,21 +69,14 @@ const Home = () => {
 
             <div className="home-blogs_inner-cards">
               <Flip direction="vertical" delay={2}>
-                <Card
-                  title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean."
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem faucibus eget natoque condimentum blandit penatibus posuere amet. Neque purus elit in purus, erat sed. Magna mauris nunc augue ut enim."
-                  image="https://images.unsplash.com/photo-1575926994241-013c0af1513e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                />
-                <Card
-                  title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean."
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem faucibus eget natoque condimentum blandit penatibus posuere amet. Neque purus elit in purus, erat sed. Magna mauris nunc augue ut enim."
-                  image="https://images.unsplash.com/photo-1525828676209-855204720969?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                />
-                <Card
-                  title="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean."
-                  description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem faucibus eget natoque condimentum blandit penatibus posuere amet. Neque purus elit in purus, erat sed. Magna mauris nunc augue ut enim."
-                  image="https://images.unsplash.com/photo-1589386417686-0d34b5903d23?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-                />
+                {blogPosts && blogPosts.map((post) => (
+                  <Card
+                  key={post.fields.slug}
+                  title={post.fields.title}
+                  description={post.fields.description}
+                  image={post.fields.coverImage.fields.file.url}
+                  />
+                ))}
               </Flip>
             </div>
           </div>
