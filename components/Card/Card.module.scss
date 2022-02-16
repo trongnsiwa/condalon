@@ -38,6 +38,21 @@
       &_title {
         margin-top: 1rem;
         color: $app-300;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+
+      &_text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
       }
 
       .btn-app {

@@ -75,6 +75,7 @@ const Home = () => {
                   title={post.fields.title}
                   description={post.fields.description}
                   image={post.fields.coverImage.fields.file.url}
+                  slug={post.fields.slug}
                   />
                 ))}
               </Flip>
