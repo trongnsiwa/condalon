@@ -37,5 +37,17 @@
         height: 20em;
       }
     }
+
+    &_error {
+      border-color: #ff7575;
+      outline: 0;
+      box-shadow: 0 0 0 0.25rem rgb(255 117 117 / 25%);
+      background-color: #ffeaea;
+    }
+
+    &_message {
+      color: #c43535;
+      margin-top: 5px;
+    }
   }
 }
