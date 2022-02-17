@@ -37,6 +37,14 @@ $theme-colors: map-merge($theme-colors, $app-colors);
     background-color: $app-300;
     color: $app-light;
   }
+
+  &:disabled {
+    opacity: 0.9;
+    &:hover {
+      background-color: $app-light;
+      color: $app-300;
+    }
+  }
 }
 
 .main {

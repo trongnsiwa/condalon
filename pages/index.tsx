@@ -69,15 +69,16 @@ const Home = () => {
 
             <div className="home-blogs_inner-cards">
               <Flip direction="vertical" delay={2}>
-                {blogPosts && blogPosts.map((post) => (
-                  <Card
-                  key={post.fields.slug}
-                  title={post.fields.title}
-                  description={post.fields.description}
-                  image={post.fields.coverImage.fields.file.url}
-                  slug={post.fields.slug}
-                  />
-                ))}
+                {blogPosts &&
+                  blogPosts.map((post) => (
+                    <Card
+                      key={post.fields.slug}
+                      title={post.fields.title}
+                      description={post.fields.description}
+                      image={post.fields.coverImage.fields.file.url}
+                      slug={post.fields.slug}
+                    />
+                  ))}
               </Flip>
             </div>
           </div>
