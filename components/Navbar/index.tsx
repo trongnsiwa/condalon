@@ -1,14 +1,12 @@
 import { Nav, Navbar as BNavbar } from "react-bootstrap";
-
 import React from "react";
 import { Container } from "react-bootstrap";
 import SearchBar from "@components/SearchBar";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import Router, { useRouter} from "next/router";
 
 function Navbar() {
   const router = useRouter();
-
   return (
     <BNavbar bg="app-light" expand="lg" className="shadow">
       <Container>
@@ -37,7 +35,11 @@ function Navbar() {
             <Nav.Item className={router.pathname.split("?")[0] == "/contact" ? "active" : ""}>
               <Link href="/contact">Liên hệ</Link>
             </Nav.Item>
-            <SearchBar />
+            <SearchBar handleSubmit={(searchText) => Router.push({
+              pathname: '/search',
+              query: { keyword: searchText }
+              })}
+            />
           </Nav>
         </BNavbar.Collapse>
       </Container>
