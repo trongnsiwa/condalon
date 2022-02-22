@@ -1,61 +1,63 @@
 import Profile from "@components/Profile";
+import { createClient, Entry } from "contentful";
+import { IAboutUsContentFields, ITeamProfileFields } from "contentful/__generated__/types";
+import { useEffect, useState } from "react";
+
+const client = createClient({
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || "",
+  environment: process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT || "master",
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || ""
+});
 
 const AboutUs = () => {
+  const [aboutContent, setAboutContent] = useState<Entry<IAboutUsContentFields>[]>();
+  const [teamProfile, setTeamProfile] = useState<Entry<ITeamProfileFields>[]>();
+
+  const getAboutContent = async () => {
+    const { items } = await client.getEntries<IAboutUsContentFields>({
+      content_type: "aboutUsContent"
+    });
+
+    setAboutContent(items);
+  };
+
+  const getTeamProfileContent = async () => {
+    const { items } = await client.getEntries<ITeamProfileFields>({
+      content_type: "teamProfile",
+      order: "fields.name"
+    });
+
+    setTeamProfile(items);
+  };
+
+  useEffect(() => {
+    getAboutContent();
+  }, []);
+
+  useEffect(() => {
+    getTeamProfileContent();
+  }, []);
+
   return (
     <>
       <div className="about">
         {/* hero */}
         <div className="about-hero"></div>
         <div className="text-center">
-          <h1 className="about-content">Chúng tôi là ai</h1>
-          <h5 className="about-subcontent">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Pellentesque pellentesque mattis tortor vestibulum, leo non.
-            Pharetra arcu egestas elit cras. Enim sollicitudin eleifend nibh
-            tincidunt. Vulputate laoreet tempus id lacus quis sit id enim,
-            tincidunt. Mattis mauris eu dui et nibh facilisis maecenas. Massa
-            maecenas facilisis etiam est egestas neque. Dolor lacus, sed sit
-            nulla. In nunc lobortis magna sed bibendum. Enim proin scelerisque a
-            justo aliquet neque tristique.
-          </h5>
+          <h1 className="about-content">{aboutContent?.map((a) => a.fields.heading)[0]}</h1>
+          <h5 className="about-subcontent">{aboutContent?.map((a) => a.fields.description)[0]}</h5>
         </div>
         <div className="about-profile">
           <div className="about-profile_inner">
             <div className="about-profile_inner-cards">
-              <Profile
-                name="Hoang Phuc"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem faucibus eget natoque condimentum blandit penatibus posuere amet. Neque purus elit in purus, erat sed. Magna mauris nunc augue ut enim."
-                image="/images/avatar/hoangphuc.jpg"
-              />
-              <Profile
-                name="Thien Phuc"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem faucibus eget natoque condimentum blandit penatibus posuere amet. Neque purus elit in purus, erat sed. Magna mauris nunc augue ut enim."
-                image="/images/avatar/thienphuc.jpg"
-              />
-              <Profile
-                name="Si Trong"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem faucibus eget natoque condimentum blandit penatibus posuere amet. Neque purus elit in purus, erat sed. Magna mauris nunc augue ut enim."
-                image="/images/avatar/sitrong.jpg"
-              />
-            </div>
-          </div>
-          <div className="about-profile_inner">
-            <div className="about-profile_inner-cards">
-              <Profile
-                name="Quyen Duc"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem faucibus eget natoque condimentum blandit penatibus posuere amet. Neque purus elit in purus, erat sed. Magna mauris nunc augue ut enim."
-                image="/images/avatar/quyenduc.jpg"
-              />
-              <Profile
-                name="Quang Dat"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem faucibus eget natoque condimentum blandit penatibus posuere amet. Neque purus elit in purus, erat sed. Magna mauris nunc augue ut enim."
-                image="images/avatar/quangdat.jpg"
-              />
-              <Profile
-                name="Viet Bach"
-                description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Lorem faucibus eget natoque condimentum blandit penatibus posuere amet. Neque purus elit in purus, erat sed. Magna mauris nunc augue ut enim."
-                image="images/avatar/vietbach.jpg"
-              />
+              {teamProfile?.map((p) => (
+                <Profile
+                  key={p.sys.id}
+                  name={p.fields.name}
+                  description={p.fields.description}
+                  image={p.fields.imageUrl}
+                />
+              ))}
             </div>
           </div>
         </div>

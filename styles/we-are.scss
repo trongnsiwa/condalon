@@ -54,16 +54,18 @@
 
       &-cards {
         margin-top: 5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 2rem;
+        display: grid;
+        grid-gap: 2rem;
+        grid-template-columns: 1fr;
+
+        @include responsive($med) {
+          grid-template-columns: 1fr 1fr;
+        }
 
         @include responsive($lg) {
-          flex-direction: row;
+          grid-template-columns: 1fr 1fr 1fr;
         }
       }
     }
   }
-
 }
