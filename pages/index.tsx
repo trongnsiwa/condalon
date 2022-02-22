@@ -3,6 +3,7 @@ import RegisterForm from "@components/RegisterForm";
 import SharedForm from "@components/SharedForm";
 import { createClient, Entry } from "contentful";
 import { IBlogPostFields, IHomeContentFields } from "contentful/__generated__/types";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Fade, Flip } from "react-awesome-reveal";
 
@@ -89,7 +90,9 @@ const Home = () => {
             <Fade direction="left">
               <h2>{getFields("desc1")?.title}</h2>
               <p>{getFields("desc1")?.description}</p>
-              <button className="btn-app">Xem thêm</button>
+              <Link href="/introduce" passHref>
+                <button className="btn-app">Xem thêm</button>
+              </Link>
             </Fade>
           </div>
           <div className="home-desc_right">
@@ -116,7 +119,9 @@ const Home = () => {
             <Fade direction="right">
               <h2>{getFields("desc2")?.title}</h2>
               <p>{getFields("desc2")?.description}</p>
-              <button className="btn-app">Xem thêm</button>
+              <Link href="/about-us" passHref>
+                <button className="btn-app">Xem thêm</button>
+              </Link>
             </Fade>
           </div>
         </div>
@@ -128,7 +133,9 @@ const Home = () => {
             <Fade direction="left">
               <h2>{getFields("connect")?.title}</h2>
               <p>{getFields("connect")?.description}</p>
-              <button className="btn-app">Xem thêm</button>
+              <Link href="/contact" passHref>
+                <button className="btn-app">Xem thêm</button>
+              </Link>
             </Fade>
           </div>
           <div className="home-connect_right">
