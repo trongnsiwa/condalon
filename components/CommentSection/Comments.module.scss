@@ -2,7 +2,6 @@
 @import "../../styles/mixin";
 
 .comments {
-  
   :global {
     .comments-title {
       margin-top: 1rem;
@@ -12,19 +11,18 @@
 
     .comments-form {
       width: 100%;
-      text-align: center;
       @include responsive($lg) {
-          width: auto;
+        width: auto;
       }
-      &_title{
-        h4{
+      &_title {
+        h4 {
           margin-top: 2rem;
           color: $app-300;
         }
       }
     }
     .comments-container {
-        margin-top: 2rem;
+      margin-top: 2rem;
     }
   }
 }
