@@ -1,18 +1,21 @@
-.search{
-    &-count {
-        h2{
-            color: $app-300;
-            margin: 2rem;
-        }
-    }
-    &-cards{
-      display: flex;
-      flex-direction: column;
-      margin: 2rem 5rem;
-      gap: 2rem;
+@import "variables";
+@import "mixin";
 
-      @include responsive($lg) {
-        flex-direction: row;
-      }
+.search {
+  &-count {
+    h3 {
+      color: $app-300;
+      margin: 2rem 0;
     }
+  }
+  &-cards {
+    display: flex;
+    flex-direction: column;
+    margin: 2rem 0;
+    gap: 2rem;
+
+    @include responsive($lg) {
+      flex-direction: row;
+    }
+  }
 }

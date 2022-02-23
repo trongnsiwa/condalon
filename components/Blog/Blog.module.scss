@@ -2,8 +2,24 @@
 @import "../../styles/mixin";
 
 .blog {
-  
+  margin: 0 auto;
+  padding: 5rem 0 0 0;
+
+  &:hover {
+    h1 {
+      color: $app-200;
+    }
+
+    img {
+      opacity: 0.8;
+    }
+  }
+
   :global {
+    .blog-content {
+      width: fit-content;
+    }
+
     .blog-title {
       margin-top: 1rem;
       font-size: 45px;
@@ -22,8 +38,8 @@
     }
 
     .blog-desc {
-        padding: 1rem 0;
-        font-size: 16px;
+      padding: 1rem 0;
+      font-size: 16px;
     }
 
     .blog-line {

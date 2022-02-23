@@ -4,6 +4,8 @@
 .profile {
   width: 25rem;
   transition: transform 0.3s ease-in-out;
+  border: 1px solid $app-300;
+  border-radius: 20px;
 
   @include responsive($lg) {
     width: 20rem;
@@ -16,8 +18,9 @@
   :global {
     .profile-img {
       object-fit: cover;
-      object-position: center;
       height: 25rem;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
     }
 
     .profile-body {

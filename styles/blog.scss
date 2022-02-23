@@ -3,20 +3,38 @@
 
 .blog {
   & > div {
-    height: 100vh;
     width: 100%;
   }
 
   &-hero {
-    background-image: url("../public/images/home/hero.jpg");
-    background-position: top center;
+    background-image: url("https://images.unsplash.com/photo-1564979045531-fa386a275b27?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80");
+    background-position: center center;
+    object-fit: cover;
     background-size: cover;
-    background-repeat: no-repeat;
     position: relative;
+    height: 50vh;
+
+    &_content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+
+      h1 {
+        color: $app-400;
+      }
+    }
+  }
+
+  &-loadContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
   }
 
   &-loadAppButton {
-    position: relative;
     background-color: $app-light;
     color: $app-300;
     border: 2px solid $app-300;
