@@ -20,7 +20,7 @@ function Layout({ children }: LayoutProps) {
 
       <main className="main">{children}</main>
 
-      <div className="mt-1">
+      <div className="mt-5">
         <Footer />
       </div>
     </>

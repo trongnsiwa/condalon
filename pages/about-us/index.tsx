@@ -2,6 +2,7 @@ import Profile from "@components/Profile";
 import { createClient, Entry } from "contentful";
 import { IAboutUsContentFields, ITeamProfileFields } from "contentful/__generated__/types";
 import { useEffect, useState } from "react";
+import { Fade } from "react-awesome-reveal";
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || "",
@@ -42,10 +43,24 @@ const AboutUs = () => {
     <>
       <div className="about">
         {/* hero */}
-        <div className="about-hero"></div>
+        <div className="about-hero">
+          <div className="about-hero_content">
+            <Fade direction="down">
+              <h1>Về Lọ Đựng Sao</h1>
+              <p>
+                “Dare to live the life you have dreamed for yourself. Go forward and make your
+                dreams come true.”
+              </p>
+            </Fade>
+          </div>
+        </div>
         <div className="text-center">
-          <h1 className="about-content">{aboutContent?.map((a) => a.fields.heading)[0]}</h1>
-          <h5 className="about-subcontent">{aboutContent?.map((a) => a.fields.description)[0]}</h5>
+          <Fade direction="up">
+            <h1 className="about-content">{aboutContent?.map((a) => a.fields.heading)[0]}</h1>
+            <h5 className="about-subcontent">
+              {aboutContent?.map((a) => a.fields.description)[0]}
+            </h5>
+          </Fade>
         </div>
         <div className="about-profile">
           <div className="about-profile_inner">

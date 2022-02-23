@@ -3,11 +3,12 @@ import { createClient, Entry } from "contentful";
 import { IBlogPostFields } from "contentful/__generated__/types";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import { Fade, Slide } from "react-awesome-reveal";
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || "",
   environment: process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT || "master",
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || "",
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN || ""
 });
 
 const Blog = () => {
@@ -22,7 +23,7 @@ const Blog = () => {
 
   const getBlogContent = async () => {
     const { items } = await client.getEntries<IBlogPostFields>({
-      content_type: "blogPost",
+      content_type: "blogPost"
     });
     if (items.length > 2) {
       setHasMore(true);
@@ -32,7 +33,7 @@ const Blog = () => {
 
   const getBlogContentFul = async () => {
     const { items } = await client.getEntries<IBlogPostFields>({
-      content_type: "blogPost",
+      content_type: "blogPost"
     });
     console.log("Load Full!");
     setBlogContent(items);
@@ -67,39 +68,51 @@ const Blog = () => {
     <>
       <div className="blog">
         {/* hero */}
-        <div className="blog-hero"></div>
-        {blogContent?.map((item, i) => {
-          return (
-            <>
-              <ul className="list-style-type: none;">
-                <li key={item.fields.slug}>
-                  <Link href={"/blog/" + item.fields.slug} passHref>
-                    <a>
-                      <BlogItem
-                        image={
-                          getFields(item.fields.slug)?.coverImage.fields.file
-                            .url
-                        }
-                        title={getFields(item.fields.slug)?.title}
-                        publicDate={getFields(item.fields.slug)?.title}
-                        owner="Hoang Phuc"
-                        description={getFields(item.fields.slug)?.description}
-                        key={item.sys.id}
-                      />
-                    </a>
-                  </Link>
-                </li>
-              </ul>
-            </>
-          );
-        })}
-      </div>
-      <nav ref={loadRef}>
-        {hasMore ? (
-          <button className="blog-loadAppButton" onClick={handleLoadMore}>Tải thêm</button>
+        <div className="blog-hero">
+          <div className="blog-hero_content">
+            <Fade direction="down">
+              <h1>Bài Viết Mới Nhất</h1>
+              <p>“It is better to be young in your failures than old in your successes”</p>
+            </Fade>
+          </div>
+        </div>
+        {blogContent ? (
+          blogContent.length > 0 ? (
+            blogContent.map((item, i) => {
+              return (
+                <Slide key={item.fields.slug}>
+                  <ul className="list-style-type: none;">
+                    <li>
+                      <Link href={"/blog/" + item.fields.slug} passHref>
+                        <a>
+                          <BlogItem
+                            image={getFields(item.fields.slug)?.coverImage.fields.file.url}
+                            title={getFields(item.fields.slug)?.title}
+                            publicDate={getFields(item.fields.slug)?.title}
+                            owner="Hoang Phuc"
+                            description={getFields(item.fields.slug)?.description}
+                            key={item.sys.id}
+                          />
+                        </a>
+                      </Link>
+                    </li>
+                  </ul>
+                </Slide>
+              );
+            })
+          ) : (
+            <h2 className="text-center m-5">Không có kết quả</h2>
+          )
         ) : (
-          <p className="blog-loadButton">Không còn kết quả</p>
+          <h2 className="text-center m-5">Không có kết quả</h2>
         )}
+      </div>
+      <nav ref={loadRef} className="blog-loadContainer">
+        {hasMore ? (
+          <button className="blog-loadAppButton" onClick={handleLoadMore}>
+            Tải thêm
+          </button>
+        ) : null}
       </nav>
     </>
   );
