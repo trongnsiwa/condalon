@@ -27,11 +27,16 @@
       font-style: italic;
     }
     &_content {
-      margin-left: 6rem;
-      margin-right: 6rem;
+      margin-left: 1rem;
+      margin-right: 1rem;
+
+      @include responsive($lg) {
+        margin-left: 6rem;
+        margin-right: 6rem;
+      }
     }
   }
-  &-share{
+  &-share {
     margin-top: 2rem;
     margin-left: 6rem;
     margin-right: 6rem;
@@ -73,7 +78,6 @@
     border-bottom: 0.1rem solid $app-300;
   }
   &-recommendBlog {
-    
     @include center(column);
     h1 {
       color: $app-300;
@@ -92,6 +96,10 @@
     }
   }
   &-commentSection {
-    margin: 4rem;
+    margin: 0 1rem;
+
+    @include responsive($med) {
+      margin: 4rem 6rem;
+    }
   }
 }
