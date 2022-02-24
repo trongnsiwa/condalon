@@ -4,6 +4,8 @@ import { IBlogPostFields } from "contentful/__generated__/types";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { Fade, Slide } from "react-awesome-reveal";
+import InfiniteScroll from 'react-infinite-scroll-component';
+import {Spinner, ToastHeader} from 'react-bootstrap';
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || "",
@@ -13,30 +15,35 @@ const client = createClient({
 
 const Blog = () => {
   const [blogContent, setBlogContent] = useState<Entry<IBlogPostFields>[]>();
+  const [tempBlogContent, setTempBlogContent] = useState<Entry<IBlogPostFields>[]>();
   const [loadMore, setLoadMore] = useState(false);
   const [hasMore, setHasMore] = useState(false);
-  const loadRef = useRef();
-
-  const handleLoadMore = () => {
-    setLoadMore(true);
-  };
+  const [index, setIndex] = useState(2);
+  const [countBlog, setCountBlog] = useState(0);
+  const [countTempBlog, setTempCountBlog] = useState(3);
 
   const getBlogContent = async () => {
     const { items } = await client.getEntries<IBlogPostFields>({
       content_type: "blogPost"
     });
-    if (items.length > 2) {
-      setHasMore(true);
-    }
-    setBlogContent(items.slice(0, 2));
+    setBlogContent(items.slice(0, index));
+    setIndex(index + 2);
+    getBlogContentFul();
+  };
+
+  const getBlogContentNext = async () => {
+    const { items } = await client.getEntries<IBlogPostFields>({
+      content_type: "blogPost"
+    });
+    setBlogContent(items.slice(0, index));
+    setIndex(index + 2);
   };
 
   const getBlogContentFul = async () => {
     const { items } = await client.getEntries<IBlogPostFields>({
       content_type: "blogPost"
     });
-    console.log("Load Full!");
-    setBlogContent(items);
+    setTempBlogContent(items);
   };
 
   const getFields = (slug: string) => {
@@ -47,19 +54,29 @@ const Blog = () => {
     getBlogContent();
   }, []);
 
-  useEffect(() => {
-    if (loadMore && hasMore) {
-      console.log("Load more!");
-      getBlogContentFul();
-      setBlogContent(blogContent);
-      setLoadMore(false);
+  const fecthDataBlog = () => {
+    if(hasMore) {
+    getBlogContentNext();
+    blogContent.map((item) =>{
+      setCountBlog(item.fields.slug.length);
+    })
+    tempBlogContent.map((item) => {
+      setTempCountBlog(item.fields.slug.length);
+    })
     }
-  }, [loadMore, hasMore]);
+  };
+
+  const loading = () =>{
+    return (
+      <Spinner animation="border" role="status">
+        <span className="visually-hidden">Loading...</span>
+      </Spinner>
+    );
+  }
 
   useEffect(() => {
     if (blogContent != null) {
-      console.log("Has more!");
-      const isMore = blogContent.length < 3;
+      const isMore = countBlog < countTempBlog;
       setHasMore(isMore);
     }
   }, [blogContent]);
@@ -77,11 +94,17 @@ const Blog = () => {
           </div>
         </div>
         {blogContent ? (
-          blogContent.length > 0 ? (
+          blogContent.length > 0 ? (  
             blogContent.map((item, i) => {
               return (
                 <Slide key={item.fields.slug}>
-                  <ul className="list-style-type: none;">
+                  <InfiniteScroll 
+                    dataLength={item.fields.slug.length} 
+                    next={fecthDataBlog} 
+                    hasMore={hasMore} 
+                    loader={loading}
+                  >
+                    <ul>
                     <li>
                       <Link href={"/blog/" + item.fields.slug} passHref>
                         <a>
@@ -97,6 +120,7 @@ const Blog = () => {
                       </Link>
                     </li>
                   </ul>
+                  </InfiniteScroll>
                 </Slide>
               );
             })
@@ -107,13 +131,13 @@ const Blog = () => {
           <h2 className="text-center m-5">Không có kết quả</h2>
         )}
       </div>
-      <nav ref={loadRef} className="blog-loadContainer">
+      {/* <nav ref={loadRef} className="blog-loadContainer">
         {hasMore ? (
           <button className="blog-loadAppButton" onClick={handleLoadMore}>
             Tải thêm
           </button>
         ) : null}
-      </nav>
+      </nav> */}
     </>
   );
 };
