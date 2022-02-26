@@ -1,3 +1,4 @@
+import Layout from "@components/layouts/Layout";
 import Profile from "@components/Profile";
 import { createClient, Entry } from "contentful";
 import { IAboutUsContentFields, ITeamProfileFields } from "contentful/__generated__/types";
@@ -40,7 +41,7 @@ const AboutUs = () => {
   }, []);
 
   return (
-    <>
+    <Layout title="Chúng Tôi Là">
       <div className="about">
         {/* hero */}
         <div className="about-hero">
@@ -77,7 +78,7 @@ const AboutUs = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

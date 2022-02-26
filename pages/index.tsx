@@ -1,4 +1,5 @@
 import Card from "@components/Card";
+import Layout from "@components/layouts/Layout";
 import RegisterForm from "@components/RegisterForm";
 import SharedForm from "@components/SharedForm";
 import { createClient, Entry } from "contentful";
@@ -47,7 +48,7 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <Layout title="Trang Chủ">
       <div className="home">
         {/* hero */}
         <div className="home-hero">
@@ -154,7 +155,7 @@ const Home = () => {
           </Fade>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

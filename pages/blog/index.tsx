@@ -4,8 +4,9 @@ import { IBlogPostFields } from "contentful/__generated__/types";
 import { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import { Fade, Slide } from "react-awesome-reveal";
-import InfiniteScroll from 'react-infinite-scroll-component';
-import {Spinner, ToastHeader} from 'react-bootstrap';
+import InfiniteScroll from "react-infinite-scroll-component";
+import { Spinner, ToastHeader } from "react-bootstrap";
+import Layout from "@components/layouts/Layout";
 
 const client = createClient({
   space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID || "",
@@ -55,24 +56,24 @@ const Blog = () => {
   }, []);
 
   const fecthDataBlog = () => {
-    if(hasMore) {
-    getBlogContentNext();
-    blogContent.map((item) =>{
-      setCountBlog(item.fields.slug.length);
-    })
-    tempBlogContent.map((item) => {
-      setTempCountBlog(item.fields.slug.length);
-    })
+    if (hasMore) {
+      getBlogContentNext();
+      blogContent.map((item) => {
+        setCountBlog(item.fields.slug.length);
+      });
+      tempBlogContent.map((item) => {
+        setTempCountBlog(item.fields.slug.length);
+      });
     }
   };
 
-  const loading = () =>{
+  const loading = () => {
     return (
       <Spinner animation="border" role="status">
         <span className="visually-hidden">Loading...</span>
       </Spinner>
     );
-  }
+  };
 
   useEffect(() => {
     if (blogContent != null) {
@@ -82,7 +83,7 @@ const Blog = () => {
   }, [blogContent]);
 
   return (
-    <>
+    <Layout title="Blog">
       <div className="blog">
         {/* hero */}
         <div className="blog-hero">
@@ -94,32 +95,32 @@ const Blog = () => {
           </div>
         </div>
         {blogContent ? (
-          blogContent.length > 0 ? (  
+          blogContent.length > 0 ? (
             blogContent.map((item, i) => {
               return (
                 <Slide key={item.fields.slug}>
-                  <InfiniteScroll 
-                    dataLength={item.fields.slug.length} 
-                    next={fecthDataBlog} 
-                    hasMore={hasMore} 
+                  <InfiniteScroll
+                    dataLength={item.fields.slug.length}
+                    next={fecthDataBlog}
+                    hasMore={hasMore}
                     loader={loading}
                   >
                     <ul>
-                    <li>
-                      <Link href={"/blog/" + item.fields.slug} passHref>
-                        <a>
-                          <BlogItem
-                            image={getFields(item.fields.slug)?.coverImage.fields.file.url}
-                            title={getFields(item.fields.slug)?.title}
-                            publicDate={getFields(item.fields.slug)?.title}
-                            owner="Hoang Phuc"
-                            description={getFields(item.fields.slug)?.description}
-                            key={item.sys.id}
-                          />
-                        </a>
-                      </Link>
-                    </li>
-                  </ul>
+                      <li>
+                        <Link href={"/blog/" + item.fields.slug} passHref>
+                          <a>
+                            <BlogItem
+                              image={getFields(item.fields.slug)?.coverImage.fields.file.url}
+                              title={getFields(item.fields.slug)?.title}
+                              publicDate={getFields(item.fields.slug)?.title}
+                              owner="Hoang Phuc"
+                              description={getFields(item.fields.slug)?.description}
+                              key={item.sys.id}
+                            />
+                          </a>
+                        </Link>
+                      </li>
+                    </ul>
                   </InfiniteScroll>
                 </Slide>
               );
@@ -138,7 +139,7 @@ const Blog = () => {
           </button>
         ) : null}
       </nav> */}
-    </>
+    </Layout>
   );
 };
 

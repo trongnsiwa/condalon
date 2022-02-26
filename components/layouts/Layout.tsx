@@ -1,20 +1,28 @@
 import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
+import { NextSeo } from "next-seo";
 import Head from "next/head";
 import React from "react";
 import { Container } from "react-bootstrap";
 
 interface LayoutProps {
   children: React.ReactNode;
+  title: string;
 }
 
-function Layout({ children }: LayoutProps) {
+function Layout({ children, title }: LayoutProps) {
   return (
     <>
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Bố Mẹ Ơi, Con Đã Lớn</title>
-      </Head>
+      {title && (
+        <NextSeo
+          title={`${title} | Bố Mẹ Ơi, Con Đã Lớn | Lọ Đựng Sao Team`}
+          description={`Đây là trang ${title} của Bố Mẹ Ơi, Con Đã Lớn. Truy cập ngay để dược truyền cảm hứng về tuổi trẻ và ước mơ!`}
+          openGraph={{
+            title: `${title} | Bố Mẹ Ơi, Con Đã Lớn | Lọ Đựng Sao Team`,
+            description: `Đây là trang ${title} của Bố Mẹ Ơi, Con Đã Lớn. Truy cập ngay để dược truyền cảm hứng về tuổi trẻ và ước mơ!`
+          }}
+        />
+      )}
 
       <Navbar />
 
