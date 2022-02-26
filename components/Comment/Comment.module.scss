@@ -6,9 +6,9 @@
     display: flex;
     margin-bottom: 28px;
     .comment-image {
-        margin-right: 2rem;
-        width: 100px;
-        height: 100px;
+        margin-right: 1rem;
+        width: 65px;
+        height: 65px;
         img {
             display: flex;
             border-radius: 20rem;
@@ -19,7 +19,7 @@
     .comment-rightSide {
       width: 100%;
       &-text{
-        font-size: 21px;
+        font-size: 18px;
       }
       &-actions{
         display: flex;
@@ -41,12 +41,12 @@
         display: flex;
         &-author{
           margin-right: 8px;
-          font-size: 25px;
+          font-size: 21px;
           color: $app-300;
         }
         &-createdAt{
             margin-right: 8px;
-            font-size: 23px;
+            font-size: 19px;
         }
       }
     }
