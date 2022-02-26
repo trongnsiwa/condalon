@@ -47,7 +47,7 @@ function Footer() {
         </div>
         {/* navbar */}
         <div className="footer-inner_links">
-          <Link href="/home">Trang chủ</Link>
+          <Link href="/">Trang chủ</Link>
           <Link href="/blog">Blog</Link>
           <Link href="/introduce">Giới thiệu</Link>
           <Link href="/about-us">Chúng tôi là</Link>
