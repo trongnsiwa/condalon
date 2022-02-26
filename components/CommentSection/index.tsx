@@ -40,9 +40,9 @@ function CommentSection ({blog_id}) {
                 }} width="85rem"/>
             </div>
             {rootComments?.length > 0 && (
-                <h2 className="comments-title">
+                <h3 className="comments-title">
                 Bình luận
-                </h2>
+                </h3>
             )}
             <div className="comments-container">
                 {rootComments?.length > 0 && rootComments?.map((comment) => {

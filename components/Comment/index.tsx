@@ -14,7 +14,7 @@ function Comment ({comment, replies, activeComment, setActiveComment, addComment
             <div className="commnet-rightSide">
                 <div className="comment-rightSide_content">
                     <div className="comment-rightSide_content-author">{comment.fields.commentatorName}</div>
-                    <div className="comment-rightSide_content-createdAt">{createdAt.toLocaleDateString()} { createdAt.toLocaleTimeString()}</div>
+                    <div className="comment-rightSide_content-createdAt">{createdAt.toLocaleDateString()} { createdAt.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
                 </div>
                 <div className="comment-rightSide-text">{comment.fields.content}</div>
                 <div className="comment-rightSide-actions">
