@@ -1,5 +1,6 @@
 import { BlogApi } from "services/blog";
 import Card from "@components/Card";
+import Layout from "@components/layouts/Layout";
 
 const blogAPI = new BlogApi();
 export async function getServerSideProps(ctx) {
@@ -16,7 +17,7 @@ export async function getServerSideProps(ctx) {
 }
 const SearchPage = ({ blogs }) => {
   return (
-    <>
+    <Layout title="Tìm kiếm">
       <div className="container search">
         <div className="search-count">
           <h3>Tìm thấy {blogs?.length} bài viết:</h3>
@@ -35,7 +36,7 @@ const SearchPage = ({ blogs }) => {
           })}
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

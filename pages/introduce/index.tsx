@@ -1,3 +1,4 @@
+import Layout from "@components/layouts/Layout";
 import { createClient, Entry } from "contentful";
 import { IIntroduceContentFields } from "contentful/__generated__/types";
 import Link from "next/link";
@@ -30,7 +31,7 @@ const Introduce = () => {
   }, []);
 
   return (
-    <>
+    <Layout title="Giới Thiệu">
       <div className="introduce">
         {/* hero */}
         <div className="introduce-bgImg">
@@ -89,7 +90,7 @@ const Introduce = () => {
           </div>
         </div>
       </div>
-    </>
+    </Layout>
   );
 };
 

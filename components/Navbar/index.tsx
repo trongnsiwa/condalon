@@ -3,7 +3,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import SearchBar from "@components/SearchBar";
 import Link from "next/link";
-import Router, { useRouter} from "next/router";
+import Router, { useRouter } from "next/router";
 
 function Navbar() {
   const router = useRouter();
@@ -23,7 +23,7 @@ function Navbar() {
             <Nav.Item className={router.pathname.split("?")[0] == "/" ? "active" : ""}>
               <Link href="/">Trang chủ</Link>
             </Nav.Item>
-            <Nav.Item className={router.pathname.split("?")[0] == "/blog" ? "active" : ""}>
+            <Nav.Item className={router.pathname.split("/")[1] == "blog" ? "active" : ""}>
               <Link href="/blog">Blog</Link>
             </Nav.Item>
             <Nav.Item className={router.pathname.split("?")[0] == "/introduce" ? "active" : ""}>
@@ -35,10 +35,13 @@ function Navbar() {
             <Nav.Item className={router.pathname.split("?")[0] == "/contact" ? "active" : ""}>
               <Link href="/contact">Liên hệ</Link>
             </Nav.Item>
-            <SearchBar handleSubmit={(searchText) => Router.push({
-              pathname: '/search',
-              query: { keyword: searchText }
-              })}
+            <SearchBar
+              handleSubmit={(searchText) =>
+                Router.push({
+                  pathname: "/search",
+                  query: { keyword: searchText }
+                })
+              }
             />
           </Nav>
         </BNavbar.Collapse>
