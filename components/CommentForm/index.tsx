@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import styles from "./CommentForm.module.scss";
 
-function CommentForm({ handleSubmit, submitLabel, hasCancelButton = false, handleCancel, width }) {
+function CommentForm({ handleSubmit, submitLabel, hasCancelButton = false, handleCancel }) {
   const [text, setText] = useState("");
   const [name, setName] = useState("");
   const isTextareaDisabled = text.length == 0 || name.length == 0;
@@ -13,7 +13,7 @@ function CommentForm({ handleSubmit, submitLabel, hasCancelButton = false, handl
     setName("");
   };
   return (
-    <div className={styles.commentForm} style={{ width: width }}>
+    <div className={styles.commentForm}>
       <Form onSubmit={onSubmit}>
         <input
           className="commentForm-commentorName container-fluid"
