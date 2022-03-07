@@ -44,32 +44,32 @@ export async function getStaticProps({ params }) {
 const Bold = ({ children }) => <span style={{ fontWeight: "bold" }}>{children}</span>;
 const Paragragh = ({ children }) => <p>{children}</p>;
 const H1 = ({ children }) => (
-  <div style={{ textAlign: "center" }}>
+  <div style={{ color: "#148dd9"}}>
     <h1>{children}</h1>
   </div>
 );
 const H2 = ({ children }) => (
-  <div style={{ textAlign: "center" }}>
+  <div style={{ color: "#148dd9"}}>
     <h2>{children}</h2>
   </div>
 );
 const H3 = ({ children }) => (
-  <div style={{ textAlign: "center" }}>
+  <div style={{ color: "#148dd9"}}>
     <h3>{children}</h3>
   </div>
 );
 const H4 = ({ children }) => (
-  <div style={{ textAlign: "center" }}>
+  <div style={{ color: "#148dd9"}}>
     <h4>{children}</h4>
   </div>
 );
 const H5 = ({ children }) => (
-  <div style={{ textAlign: "center" }}>
+  <div style={{ color: "#148dd9"}}>
     <h5>{children}</h5>
   </div>
 );
 const H6 = ({ children }) => (
-  <div style={{ textAlign: "center" }}>
+  <div style={{ color: "#148dd9"}}>
     <h6>{children}</h6>
   </div>
 );
