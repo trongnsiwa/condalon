@@ -5,7 +5,7 @@ import { Card as BCard } from "react-bootstrap";
 import styles from "./Card.module.scss";
 
 interface CardProps {
-  slug: string,
+  slug: string;
   image: string;
   title: string;
   description: string;
@@ -18,7 +18,9 @@ function Card({ slug, image, title, description }: CardProps) {
       <BCard.Body className="card-body">
         <BCard.Title className="card-body_title subhead">{title}</BCard.Title>
         <BCard.Text className="card-body_text">{description}</BCard.Text>
-        <Link href={`/blog/${slug}`} passHref><button className="btn-app">Xem thêm</button></Link>
+        <Link href={`/blog/${slug}`} passHref>
+          <button className="btn-app">Xem thêm</button>
+        </Link>
       </BCard.Body>
     </BCard>
   );
