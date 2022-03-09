@@ -7,6 +7,7 @@
   background-color: $app-light;
   box-shadow: 0 3px 10px rgba($color: $app-300, $alpha: 0.2);
   transition: transform 0.3s ease-in-out;
+  cursor: default;
 
   @include responsive($lg) {
     width: 20rem;
