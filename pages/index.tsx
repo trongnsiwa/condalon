@@ -69,8 +69,8 @@ const Home = () => {
               <h1>{getFields("blogs")?.title}</h1>
             </Fade>
 
-            <div className="home-blogs_inner-cards">
-              <Flip direction="vertical" delay={2}>
+            <Fade direction="left">
+              <div className="home-blogs_inner-cards">
                 {blogPosts &&
                   blogPosts.map((post) => (
                     <Card
@@ -81,8 +81,8 @@ const Home = () => {
                       slug={post.fields.slug}
                     />
                   ))}
-              </Flip>
-            </div>
+              </div>
+            </Fade>
           </div>
         </div>
         {/* desc */}
