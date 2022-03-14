@@ -3,17 +3,26 @@
 
 .imageBlock {
   :global {
-    width: 60%;
-    background-color: #E9EAEC;
+    width: 100%;
+    background-color: #e9eaec;
     box-shadow: 0 0.5rem 0.6rem 0 rgba(0, 0, 0, 0.2), 0 0.5rem 1.2rem 0 rgba(0, 0, 0, 0.19);
     margin-bottom: 2rem;
     margin-left: auto;
     margin-right: auto;
+
+    @include responsive($lg) {
+      width: 75%;
+    }
+
+    @include responsive($xl) {
+      width: 60%;
+    }
+
     .imageBlock-image {
-        width: 90%;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+      width: 90%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .imageBlock-description {

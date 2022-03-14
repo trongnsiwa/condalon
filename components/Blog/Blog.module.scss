@@ -3,7 +3,15 @@
 
 .blog {
   margin: 0 auto;
-  padding: 5rem 20rem 0 20rem;
+  padding: 5rem 3rem 0 3rem;
+
+  @include responsive($lg) {
+    padding: 5rem 10rem 0 10rem;
+  }
+
+  @include responsive($xl) {
+    padding: 5rem 20rem 0 20rem;
+  }
 
   &:hover {
     h1 {
@@ -22,24 +30,48 @@
 
     .blog-title {
       margin-top: 1rem;
-      font-size: 45px;
+      font-size: 30px;
       color: $app-300;
+
+      @include responsive($lg) {
+        font-size: 35px;
+      }
+
+      @include responsive($xl) {
+        font-size: 45px;
+      }
     }
 
     .blog-date {
-      font-size: 20px;
+      font-size: 15px;
+
+      @include responsive($xl) {
+        font-size: 20px;
+      }
     }
 
     .blog-img {
-      width: 55%;
+      width: 100%;
       display: block;
       margin-left: auto;
       margin-right: auto;
+
+      @include responsive($lg) {
+        width: 75%;
+      }
+
+      @include responsive($xl) {
+        width: 65%;
+      }
     }
 
     .blog-desc {
       padding: 1rem 0;
-      font-size: 16px;
+      font-size: 15px;
+
+      @include responsive($xl) {
+        font-size: 16px;
+      }
     }
 
     .blog-line {

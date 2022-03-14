@@ -46,7 +46,7 @@ const AboutUs = () => {
         {/* hero */}
         <div className="about-hero">
           <div className="about-hero_content">
-            <Fade direction="down">
+            <Fade direction="down" triggerOnce>
               <h1>Về Lọ Đựng Sao</h1>
               <p>
                 “Dare to live the life you have dreamed for yourself. Go forward and make your
@@ -56,7 +56,7 @@ const AboutUs = () => {
           </div>
         </div>
         <div className="text-center">
-          <Fade direction="up">
+          <Fade direction="up" triggerOnce>
             <h1 className="about-content">{aboutContent?.map((a) => a.fields.heading)[0]}</h1>
             <h5 className="about-subcontent">
               {aboutContent?.map((a) => a.fields.description)[0]}

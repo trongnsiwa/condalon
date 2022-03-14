@@ -53,7 +53,7 @@ const Home = () => {
         {/* hero */}
         <div className="home-hero">
           <div className="home-hero_content">
-            <Fade direction="down">
+            <Fade direction="down" triggerOnce>
               <h1>{getFields("hero")?.title}</h1>
               <p>{getFields("hero")?.description}</p>
               <a href="#blogs">
@@ -65,11 +65,11 @@ const Home = () => {
         {/* blogs */}
         <div id="blogs" className="home-blogs">
           <div className="home-blogs_inner">
-            <Fade direction="down">
+            <Fade direction="down" triggerOnce>
               <h1>{getFields("blogs")?.title}</h1>
             </Fade>
 
-            <Fade direction="left">
+            <Fade direction="left" triggerOnce>
               <div className="home-blogs_inner-cards">
                 {blogPosts &&
                   blogPosts.map((post) => (
@@ -88,7 +88,7 @@ const Home = () => {
         {/* desc */}
         <div className="home-desc">
           <div className="home-desc_left">
-            <Fade direction="left">
+            <Fade direction="left" triggerOnce>
               <h2>{getFields("desc1")?.title}</h2>
               <p>{getFields("desc1")?.description}</p>
               <Link href="/introduce" passHref>
@@ -97,7 +97,7 @@ const Home = () => {
             </Fade>
           </div>
           <div className="home-desc_right">
-            <Fade direction="right">
+            <Fade direction="right" triggerOnce>
               <img
                 src="https://images.unsplash.com/photo-1491897554428-130a60dd4757?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
                 alt=""
@@ -109,7 +109,7 @@ const Home = () => {
         <div className="home-desc2">
           <div className="home-desc2_dark" />
           <div className="home-desc2_left">
-            <Fade direction="left">
+            <Fade direction="left" triggerOnce>
               <img
                 src="https://images.unsplash.com/photo-1620553967344-c6d788133f17?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
                 alt=""
@@ -117,7 +117,7 @@ const Home = () => {
             </Fade>
           </div>
           <div className="home-desc2_right">
-            <Fade direction="right">
+            <Fade direction="right" triggerOnce>
               <h2>{getFields("desc2")?.title}</h2>
               <p>{getFields("desc2")?.description}</p>
               <Link href="/about-us" passHref>
@@ -131,7 +131,7 @@ const Home = () => {
         {/* connect */}
         <div className="home-connect">
           <div className="home-connect_left">
-            <Fade direction="left">
+            <Fade direction="left" triggerOnce>
               <h2>{getFields("connect")?.title}</h2>
               <p>{getFields("connect")?.description}</p>
               <Link href="/contact" passHref>
@@ -140,14 +140,14 @@ const Home = () => {
             </Fade>
           </div>
           <div className="home-connect_right">
-            <Fade direction="right">
+            <Fade direction="right" triggerOnce>
               <SharedForm />
             </Fade>
           </div>
         </div>
         {/* email */}
         <div className="home-email">
-          <Fade direction="up">
+          <Fade direction="up" triggerOnce>
             <h2>{getFields("email")?.title}</h2>
             <div className="home-email_form">
               <RegisterForm />

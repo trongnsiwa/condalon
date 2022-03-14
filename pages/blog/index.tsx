@@ -88,7 +88,7 @@ const Blog = () => {
         {/* hero */}
         <div className="blog-hero">
           <div className="blog-hero_content">
-            <Fade direction="down">
+            <Fade direction="down" triggerOnce>
               <h1>Bài Viết Mới Nhất</h1>
               <p>“It is better to be young in your failures than old in your successes”</p>
             </Fade>
@@ -98,7 +98,7 @@ const Blog = () => {
           blogContent.length > 0 ? (
             blogContent.map((item, i) => {
               return (
-                <Slide key={item.fields.slug}>
+                <Slide key={item.fields.slug} triggerOnce>
                   <InfiniteScroll
                     dataLength={item.fields.slug.length}
                     next={fecthDataBlog}
@@ -128,9 +128,7 @@ const Blog = () => {
           ) : (
             <h2 className="text-center m-5">Không có kết quả</h2>
           )
-        ) : (
-          <h2 className="text-center m-5">Không có kết quả</h2>
-        )}
+        ) : null}
       </div>
       {/* <nav ref={loadRef} className="blog-loadContainer">
         {hasMore ? (
