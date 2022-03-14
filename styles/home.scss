@@ -17,10 +17,32 @@
     &_content {
       position: absolute;
       top: 25%;
-      left: 15%;
+      left: 5%;
+
+      @include responsive($lg) {
+        left: 15%;
+      }
 
       h1 {
         color: $app-400;
+        font-size: 2rem;
+
+        @include responsive($lg) {
+          font-size: 3rem;
+        }
+
+        @include responsive($xl) {
+          font-size: 4rem;
+        }
+      }
+
+      p {
+        margin-bottom: 35px;
+        font-size: 1.5rem;
+
+        @include responsive($xl) {
+          font-size: 2rem;
+        }
       }
     }
   }
@@ -127,6 +149,11 @@
       left: 0;
       top: 0;
       z-index: -1;
+      display: none;
+
+      @include responsive($lg) {
+        display: block;
+      }
 
       @include responsive($xl) {
         height: calc(100vh + 5rem);
