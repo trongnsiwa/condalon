@@ -1,4 +1,5 @@
 import CommentForm from "@components/CommentForm";
+import Avvvatars from "avvvatars-react";
 import React from "react";
 import styles from "./Comment.module.scss";
 
@@ -9,7 +10,7 @@ function Comment({ comment, replies, activeComment, setActiveComment, addComment
   return (
     <div className={styles.comment}>
       <div className="comment-image">
-        <img src="https://tleliteracy.com/wp-content/uploads/2017/02/default-avatar.png" />
+        <Avvvatars value={comment.fields.commentatorName} style="character" size={40} />
       </div>
       <div className="commnet-rightSide">
         <div className="comment-rightSide_content">
