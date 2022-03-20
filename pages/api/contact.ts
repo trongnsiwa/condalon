@@ -1,5 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
+require("dotenv").config();
 const nodemailer = require("nodemailer");
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -8,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     host: "smtp.gmail.com",
     auth: {
       user: "lodungsao@gmail.com",
-      pass: process.env.password
+      pass: process.env.NEXT_MAIL_PASSWORD
     },
     secure: true
   });
@@ -44,12 +45,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       if (err) {
         console.error(err);
         reject(err);
+        res.send("error " + JSON.stringify(err));
       } else {
-        console.log(info);
+        console.log("mail send");
         resolve(info);
+        res.send("success");
       }
     });
   });
-
-  res.status(200).json({ status: "OK" });
 };
