@@ -9,7 +9,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     host: "smtp.gmail.com",
     auth: {
       user: "lodungsao@gmail.com",
-      pass: process.env.NEXT_MAIL_PASSWORD
+      pass: "Lodungsao2022"
     },
     secure: true
   });
