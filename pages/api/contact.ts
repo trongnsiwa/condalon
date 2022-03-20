@@ -1,21 +1,19 @@
-import { NextApiRequest, NextApiResponse } from "next";
-
 require("dotenv").config();
 const nodemailer = require("nodemailer");
 
-export default async (req: NextApiRequest, res: NextApiResponse) => {
+export default async (req, res) => {
   const transporter = nodemailer.createTransport({
     port: 465,
     host: "smtp.gmail.com",
     auth: {
       user: "lodungsao@gmail.com",
-      pass: "Lodungsao2022"
+      pass: process.env.NEXT_MAIL_PASSWORD
     },
     secure: true
   });
 
   await new Promise((resolve, reject) => {
-    transporter.verify(function (error: any, success: any) {
+    transporter.verify(function (error, success) {
       if (error) {
         console.log(error);
         reject(error);
