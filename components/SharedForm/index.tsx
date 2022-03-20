@@ -1,6 +1,7 @@
 import { Formik, Form as FForm, Field, FormikValues, ErrorMessage } from "formik";
 import React, { useState } from "react";
 import { Form, Spinner } from "react-bootstrap";
+import { server } from "services/server";
 import * as Yup from "yup";
 
 import styles from "./SharedForm.module.scss";
@@ -22,7 +23,7 @@ function SharedForm() {
   });
 
   const sendMessage = (values: any, actions: any) => {
-    fetch("/api/contact", {
+    fetch(`${server}/api/contact`, {
       method: "POST",
       headers: {
         Accept: "application/json, text/plain, */*",
