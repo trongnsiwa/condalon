@@ -117,7 +117,7 @@ function SharedForm() {
             )}
           </Field>
 
-          <button className="btn-app" type="submit" disabled={!dirty || !isValid}>
+          <button className="btn-app" type="submit" disabled={!dirty || !isValid || isSubmitting}>
             {isSubmitting ? (
               <Spinner animation="border" role="status">
                 <span className="visually-hidden">Loading...</span>
