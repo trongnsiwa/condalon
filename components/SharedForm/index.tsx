@@ -7,14 +7,8 @@ import { BlogApi } from "services/blog";
 import styles from "./SharedForm.module.scss";
 
 const api = new BlogApi();
-export async function sendBlog(values: any, actions: any) {
-  await api.createBlog(values.fullname, values.title, values.message);
-  actions.resetForm();
-  actions.setSubmitting(false);
-}
 
 function SharedForm() {
-  
   const initFormData = {
     fullname: "",
     email: "",
@@ -29,6 +23,24 @@ function SharedForm() {
     title: Yup.string().required("Trường này là bắt buộc"),
     message: Yup.string().required("Trường này là bắt buộc")
   });
+
+  const sendBlog = async (values: any, actions: any) => {
+    await api
+      .createBlog(values.fullname, values.title, values.message)
+      .then(() => {
+        actions.resetForm();
+        setSubmitMessage(
+          "Cảm ơn lời chia sẻ của bạn! 😚 Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất!"
+        );
+      })
+      .catch(() => {
+        setSubmitMessage(
+          "Hiện tại bạn không thể gửi lời chia sẻ đến chúng tôi! 😓 Xin lỗi vì sự bất tiện này!"
+        );
+      });
+
+    actions.setSubmitting(false);
+  };
 
   // const sendMessage = (values: any, actions: any) => {
   //   fetch(`${server}/api/contact`, {
