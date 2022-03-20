@@ -12,7 +12,6 @@ export class BlogApi {
     });
   }
 
-
   async fetchBlogEntries(): Promise<Entry<IBlogPostFields>[]>{
     let data = await this.client
       .getEntries<IBlogPostFields>({
@@ -25,6 +24,7 @@ export class BlogApi {
     let data = await this.client.getEntries<IBlogPostFields>(filter);
     return data.items;
   }
+
   async getBlogComments(blog_id): Promise<IComment[]>{
     let data = await this.client.getEntries<IBlogPostFields>({
       content_type: 'blogPost',
@@ -32,6 +32,7 @@ export class BlogApi {
     });
     return data.items[0].fields.comments;
   }
+
   async createComment(commentatorName, content, parent): Promise<IComment>{
     const updateClient = contentful.createClient({
       accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN 
@@ -75,6 +76,7 @@ export class BlogApi {
     entry.publish();
     return entry;
   }
+
   async handleBlogComment(comment, id) {
     const updateClient = contentful.createClient({
       accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN 
@@ -97,5 +99,32 @@ export class BlogApi {
     entry.fields.comments['en-US'].push(newComment);
     const newVersionEntry = await entry.update();
     await newVersionEntry.publish();
+  }
+
+  async createBlog(authorName, title, bodyContent) {
+    var slug = title.replaceAll(" ","-");
+    console.log(slug);
+    var body = bodyContent + " Tác giả: " + authorName;
+    console.log(body);
+    const updateClient = contentful.createClient({
+      accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_MANAGEMENT_API_ACCESS_TOKEN 
+    });
+    const space = await updateClient.getSpace(process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID);
+    const environment = await space.getEnvironment(process.env.NEXT_PUBLIC_CONTENTFUL_ENVIRONMENT);
+    const entry = await environment.createEntry('waitingBlog', {
+      fields: {
+        slug: {
+          'en-US': slug
+        }, 
+        title: {
+          'en-US': title
+        }, 
+        body:  {
+          'en-US': body
+        }, 
+      }
+    });
+    entry.publish();
+    return entry;
   }
 }
