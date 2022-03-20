@@ -1,7 +1,9 @@
+import { NextApiRequest, NextApiResponse } from "next";
+
 require("dotenv").config();
 const nodemailer = require("nodemailer");
 
-export default async (req, res) => {
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   const transporter = nodemailer.createTransport({
     port: 465,
     host: "smtp.gmail.com",
@@ -13,7 +15,7 @@ export default async (req, res) => {
   });
 
   await new Promise((resolve, reject) => {
-    transporter.verify(function (error, success) {
+    transporter.verify(function (error: any, success: any) {
       if (error) {
         console.log(error);
         reject(error);
@@ -43,11 +45,11 @@ export default async (req, res) => {
       if (err) {
         console.error(err);
         reject(err);
-        res.send("error " + JSON.stringify(err));
+        res.status(500).send("error " + JSON.stringify(err));
       } else {
         console.log("mail send");
         resolve(info);
-        res.send("success");
+        res.status(200).send("success");
       }
     });
   });
