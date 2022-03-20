@@ -3,10 +3,18 @@ import React, { useState } from "react";
 import { Form, Spinner } from "react-bootstrap";
 import { server } from "services/server";
 import * as Yup from "yup";
-
+import { BlogApi } from "services/blog";
 import styles from "./SharedForm.module.scss";
 
+const api = new BlogApi();
+export async function sendBlog(values: any, actions: any) {
+  await api.createBlog(values.fullname, values.title, values.message);
+  actions.resetForm();
+  actions.setSubmitting(false);
+}
+
 function SharedForm() {
+  
   const initFormData = {
     fullname: "",
     email: "",
@@ -22,40 +30,40 @@ function SharedForm() {
     message: Yup.string().required("Trường này là bắt buộc")
   });
 
-  const sendMessage = (values: any, actions: any) => {
-    fetch(`${server}/api/contact`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(values)
-    })
-      .then((res) => {
-        console.log("Response received");
-        if (res.status === 200) {
-          console.log("Response succeeded!");
-          actions.resetForm();
-          actions.setSubmitting(false);
-          setSubmitMessage(
-            "Cảm ơn lời chia sẻ của bạn! 😚 Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất!"
-          );
-        } else {
-          actions.setSubmitting(false);
-          setSubmitMessage(
-            "Hiện tại bạn không thể gửi lời chia sẻ đến chúng tôi! 😓 Xin lỗi vì sự bất tiện này!"
-          );
-        }
-      })
-      .catch(() => {
-        setSubmitMessage(
-          "Hiện tại bạn không thể gửi lời chia sẻ đến chúng tôi! 😓 Xin lỗi vì sự bất tiện này!"
-        );
-      });
-  };
+  // const sendMessage = (values: any, actions: any) => {
+  //   fetch(`${server}/api/contact`, {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json, text/plain, */*",
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(values)
+  //   })
+  //     .then((res) => {
+  //       console.log("Response received");
+  //       if (res.status === 200) {
+  //         console.log("Response succeeded!");
+  //         actions.resetForm();
+  //         actions.setSubmitting(false);
+  //         setSubmitMessage(
+  //           "Cảm ơn lời chia sẻ của bạn! 😚 Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất!"
+  //         );
+  //       } else {
+  //         actions.setSubmitting(false);
+  //         setSubmitMessage(
+  //           "Hiện tại bạn không thể gửi lời chia sẻ đến chúng tôi! 😓 Xin lỗi vì sự bất tiện này!"
+  //         );
+  //       }
+  //     })
+  //     .catch(() => {
+  //       setSubmitMessage(
+  //         "Hiện tại bạn không thể gửi lời chia sẻ đến chúng tôi! 😓 Xin lỗi vì sự bất tiện này!"
+  //       );
+  //     });
+  // };
 
   return (
-    <Formik initialValues={initFormData} onSubmit={sendMessage} validationSchema={contactSchema}>
+    <Formik initialValues={initFormData} onSubmit={sendBlog} validationSchema={contactSchema}>
       {({ touched, errors, isSubmitting, dirty, isValid, values }) => (
         <FForm className={styles.form} onFocus={() => setSubmitMessage("")}>
           {submitMessage && <p>{submitMessage}</p>}
