@@ -1,17 +1,14 @@
 import { NextApiRequest, NextApiResponse } from "next";
 
 const nodemailer = require("nodemailer");
-const PASSWORD = process.env.password;
 
-export default async function (req: NextApiRequest, res: NextApiResponse) {
-  require("dotenv").config();
-
+export default async (req: NextApiRequest, res: NextApiResponse) => {
   const transporter = nodemailer.createTransport({
     port: 465,
     host: "smtp.gmail.com",
     auth: {
       user: "lodungsao@gmail.com",
-      pass: PASSWORD
+      pass: process.env.password
     },
     secure: true
   });
@@ -54,5 +51,5 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     });
   });
 
-  res.status(200).end();
-}
+  res.status(200).json({ status: "OK" });
+};
