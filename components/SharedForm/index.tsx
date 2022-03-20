@@ -39,6 +39,11 @@ function SharedForm() {
           setSubmitMessage(
             "Cảm ơn lời chia sẻ của bạn! 😚 Chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất!"
           );
+        } else {
+          actions.setSubmitting(false);
+          setSubmitMessage(
+            "Hiện tại bạn không thể gửi lời chia sẻ đến chúng tôi! 😓 Xin lỗi vì sự bất tiện này!"
+          );
         }
       })
       .catch(() => {
